@@ -148,11 +148,15 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/palette</li>
 
 <li>$:/plugins/alamantus/left-sidebar</li>
+
+<li>$:/plugins/alamantus/prettyquotes</li>
 
 <li>$:/plugins/alamantus/sro</li>
 
@@ -376,11 +380,11 @@ Error message and password prompt
 
 <li>Bestiary</li>
 
-<li>Bestiary (NPC &amp; Encounter Examples)</li>
-
 <li>Biography</li>
 
 <li>Book</li>
+
+<li>Character Creation</li>
 
 <li>Clothing - Feet</li>
 
@@ -390,21 +394,11 @@ Error message and password prompt
 
 <li>Clothing &amp; Accessories</li>
 
+<li>Combat</li>
+
 <li>Concept</li>
 
 <li>Essence</li>
-
-<li>essense_feel.png</li>
-
-<li>essense_grab.png</li>
-
-<li>essense_kill.png</li>
-
-<li>essense_point.png</li>
-
-<li>essense_stretch.png</li>
-
-<li>essense_wall.png</li>
 
 <li>Example Skills</li>
 
@@ -412,17 +406,15 @@ Error message and password prompt
 
 <li>Game Master's Handbook</li>
 
-<li>GM Handbook</li>
-
 <li>Grimoire</li>
-
-<li>Grimoire (Magic Guide)</li>
 
 <li>Handling Conflicts</li>
 
 <li>Hands &amp; Pockets (Inventory)</li>
 
 <li>Health</li>
+
+<li>Improvising</li>
 
 <li>Information</li>
 
@@ -432,13 +424,23 @@ Error message and password prompt
 
 <li>Jeans</li>
 
+<li>Learning</li>
+
 <li>List</li>
 
 <li>nDs</li>
 
+<li>Outlining</li>
+
 <li>Player's Handbook</li>
 
+<li>Playing the Game</li>
+
+<li>Signposting</li>
+
 <li>Sneakers</li>
+
+<li>SOIL</li>
 
 <li>Stats</li>
 
@@ -464,7 +466,7 @@ Error message and password prompt
 <div created="20180205193729977" creator="Robbie Antenesse" modified="20180207062526758" modifier="Robbie Antenesse" title="$:/config/DefaultSidebarTab">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div created="20180209160654436" creator="Robbie Antenesse" modified="20180209160654436" modifier="Robbie Antenesse" title="$:/config/MissingLinks">
+<div created="20180225185954317" creator="Robbie Antenesse" modified="20180225185954317" modifier="Robbie Antenesse" title="$:/config/MissingLinks">
 <pre>no</pre>
 </div>
 <div created="20180205193802710" creator="Robbie Antenesse" modified="20180206225325612" modifier="Robbie Antenesse" title="$:/config/Navigation/UpdateAddressBar">
@@ -488,7 +490,7 @@ Error message and password prompt
 <div created="20180205182812178" creator="Robbie Antenesse" modified="20180205182813491" modifier="Robbie Antenesse" title="$:/config/Plugins/Disabled/$:/themes/tiddlywiki/starlight">
 <pre>no</pre>
 </div>
-<div created="20180205183828205" creator="Robbie Antenesse" modified="20180207163155363" modifier="Robbie Antenesse" title="$:/config/RelinkOnRename">
+<div created="20180205183828205" creator="Robbie Antenesse" modified="20180209232342348" modifier="Robbie Antenesse" title="$:/config/RelinkOnRename">
 <pre>yes</pre>
 </div>
 <div created="20180205182300725" creator="Robbie Antenesse" modified="20180205182300725" modifier="Robbie Antenesse" title="$:/config/WikiParserRules/Inline/wikilink">
@@ -8761,6 +8763,11 @@ Error message and password prompt
 <div created="20180205181853771" creator="Robbie Antenesse" modified="20180205194054833" modifier="Robbie Antenesse" title="$:/DefaultTiddlers">
 <pre>Introduction</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[$:/plugins/alamantus/prettyquotes]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -8796,6 +8803,42 @@ Error message and password prompt
             &quot;tags&quot;: &quot;&quot;,
             &quot;modified&quot;: &quot;20170725163000426&quot;,
             &quot;created&quot;: &quot;20170322105647495&quot;
+        }
+    }
+}</pre>
+</div>
+<div created="20180210001846684" creator="Robbie Antenesse" dependents="" description="Convert straight quotes to curly quotes" modified="20180210003658586" modifier="Robbie Antenesse" name="prettyquotes" plugin-type="plugin" title="$:/plugins/alamantus/prettyquotes" type="application/json" version="1.0.1">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/alamantus/prettyquotes/parser.js&quot;: {
+            &quot;created&quot;: &quot;20180209235256544&quot;,
+            &quot;creator&quot;: &quot;Robbie Antenesse&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/core/modules/parsers/wikiparser/rules/prettyquotes.js\ntype: application/javascript\nmodule-type: wikirule\n\nWiki text inline rule for dashes. For example:\n\n```\nThis is an left single quote: ‘\nThis is an right single quote: ’\n\nThis is an left double quote: “\nThis is an right double quote: ”\n```\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nexports.name = \&quot;prettyquotes\&quot;;\nexports.types = {inline: true};\n\nexports.init = function(parser) {\n\tthis.parser = parser;\n\t// Regexp to match\n\tthis.matchRegExp = /(\\s\&quot;)|(\&quot;\\s)|(\\s')|(')/mg;\n};\n\nexports.parse = function() {\n\t// Move past the match\n\tthis.parser.pos = this.matchRegExp.lastIndex;\n\t// default to &amp;rsquo;\n\tvar quote = \&quot;’\&quot;;\n\tif (this.match[1] !== undefined) {\n\t\tquote = \&quot; “\&quot;;\n\t} else if (this.match[2] !== undefined) {\n\t\tquote = \&quot;” \&quot;;\n\t} else if (this.match[3] !== undefined) {\n\t\tquote = \&quot; ‘\&quot;;\n\t}\n\treturn [{\n\t\ttype: \&quot;entity\&quot;,\n\t\tentity: quote\n\t}];\n};\n\n})();\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;title&quot;: &quot;$:/plugins/alamantus/prettyquotes/parser.js&quot;,
+            &quot;tags&quot;: &quot;&quot;,
+            &quot;module-type&quot;: &quot;wikirule&quot;,
+            &quot;modifier&quot;: &quot;Robbie Antenesse&quot;,
+            &quot;modified&quot;: &quot;20180210002104216&quot;
+        },
+        &quot;$:/plugins/alamantus/prettyquotes/icon&quot;: {
+            &quot;created&quot;: &quot;20180210002425309&quot;,
+            &quot;creator&quot;: &quot;Robbie Antenesse&quot;,
+            &quot;text&quot;: &quot;{{$:/plugins/alamantus/prettyquotes/images/icon.svg}}&quot;,
+            &quot;title&quot;: &quot;$:/plugins/alamantus/prettyquotes/icon&quot;,
+            &quot;tags&quot;: &quot;&quot;,
+            &quot;modified&quot;: &quot;20180210002608950&quot;,
+            &quot;modifier&quot;: &quot;Robbie Antenesse&quot;
+        },
+        &quot;$:/plugins/alamantus/prettyquotes/images/icon.svg&quot;: {
+            &quot;created&quot;: &quot;20180210002618203&quot;,
+            &quot;creator&quot;: &quot;Robbie Antenesse&quot;,
+            &quot;text&quot;: &quot;&lt;svg width=\&quot;22pt\&quot; height=\&quot;22pt\&quot; version=\&quot;1.1\&quot; viewBox=\&quot;0 0 100 100\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot;&gt;\n &lt;path d=\&quot;m50 98.478-41.983-24.239v-48.478l41.983-24.239 41.983 24.239v48.478z\&quot; style=\&quot;fill:#ff4f79;stroke-width:1.2218;stroke:#ff4f79\&quot;/&gt;\n &lt;g style=\&quot;fill:#fff\&quot; aria-label=\&quot;“ ”\&quot;&gt;\n  &lt;path d=\&quot;m30.053 39.438c-8.8694-0.88391-16.797 8.9984-12.648 17.256 2.285 5.5877 11.787 3.468 10.703-2.7051-0.4988-2.6309-4.6035-6.4294 0.57617-7.0137 4.5873 2.5284 5.0074-8.7936 1.3691-7.5371zm15.529 0c-8.8785-0.89256-16.759 9.0005-12.625 17.25 2.2762 5.5893 11.785 3.4825 10.705-2.6914-0.26162-2.5318-4.5936-6.0333 0.11914-6.9336 5.0267 2.409 5.5279-8.7155 1.8008-7.625z\&quot; style=\&quot;fill:#fff;stroke-width:3.4091\&quot;/&gt;\n  &lt;path d=\&quot;m62.736 39.439c-5.3907-0.1632-6.9542 7.0875-3.1445 10.25 0.94516 4.5133-7.5293 0.93462-6.0879 4.8789-0.8898 4.0993 0.19245 6.5168 4.3516 5.2891 8.9604-0.26567 15.442-12.648 8.5508-19.221-1.0418-0.79808-2.3591-1.2217-3.6699-1.1973zm15.604 0c-5.4983-0.14351-6.8955 7.2156-3.0996 10.41 0.61172 4.3948-7.5144 0.7275-6.1074 4.7188-0.89065 4.1008 0.19382 6.5167 4.3535 5.2891 8.9479-0.27949 15.408-12.66 8.5234-19.221-1.0421-0.79842-2.3586-1.2222-3.6699-1.1973z\&quot; style=\&quot;fill:#fff;stroke-width:3.4091\&quot;/&gt;\n &lt;/g&gt;\n&lt;/svg&gt;\n&quot;,
+            &quot;title&quot;: &quot;$:/plugins/alamantus/prettyquotes/images/icon.svg&quot;,
+            &quot;tags&quot;: &quot;&quot;,
+            &quot;modified&quot;: &quot;20180210003604716&quot;,
+            &quot;modifier&quot;: &quot;Robbie Antenesse&quot;,
+            &quot;type&quot;: &quot;image/svg+xml&quot;
         }
     }
 }</pre>
@@ -8946,13 +8989,13 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20170322105910944" creator="Robbie Antenesse" list-before="$:/core/ui/TopBar/menu" modified="20180209160647636" modifier="Robbie Antenesse" tags="" title="$:/plugins/alamantus/sro/publish-button">
+<div created="20170322105910944" creator="Robbie Antenesse" list-before="$:/core/ui/TopBar/menu" modified="20180225185948592" modifier="Robbie Antenesse" tags="" title="$:/plugins/alamantus/sro/publish-button">
 <pre>&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;Open publishing window&quot;&gt;
 &lt;$action-sendmessage $message=&quot;tm-open-window&quot; $param=&quot;$:/plugins/alamantus/sro/publish&quot; height=&quot;700px&quot; width=&quot;500px&quot;/&gt;
 {{$:/plugins/alamantus/sro/images/publish.svg}}
 &lt;/$button&gt;</pre>
 </div>
-<div created="20170322105952964" creator="Robbie Antenesse" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20180209160647636" modifier="Robbie Antenesse" tags="$:/tags/Stylesheet" title="$:/plugins/alamantus/sro/readonly-styles" type="text/css">
+<div created="20170322105952964" creator="Robbie Antenesse" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20180225185948592" modifier="Robbie Antenesse" tags="$:/tags/Stylesheet" title="$:/plugins/alamantus/sro/readonly-styles" type="text/css">
 <pre>/* Readonly styles for buttons */
 
 svg.tc-image-new-button,
@@ -9061,8 +9104,8 @@ svg.tc-image-chevron-left {
 <div created="20180205183325983" creator="Robbie Antenesse" modified="20180205211650864" modifier="Robbie Antenesse" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20180206040322621" creator="Robbie Antenesse" modified="20180207171158963" modifier="Robbie Antenesse" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/System</pre>
+<div created="20180206040322621" creator="Robbie Antenesse" modified="20180225185737244" modifier="Robbie Antenesse" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
 <div created="20180205182111576" creator="Robbie Antenesse" modified="20180206040250815" modifier="Robbie Antenesse" title="$:/state/tab--1963855381">
 <pre>$:/core/ui/ControlPanel/Palette</pre>
@@ -9079,7 +9122,7 @@ svg.tc-image-chevron-left {
 <div created="20180207062021224" creator="Robbie Antenesse" modified="20180207163438962" modifier="Robbie Antenesse" title="$:/state/tab-1077803618">
 <pre>$:/plugins/gutsplus/customizations/hide-buttons-tabs</pre>
 </div>
-<div created="20180209160645618" creator="Robbie Antenesse" modified="20180209160701539" modifier="Robbie Antenesse" title="$:/state/tab-1105382082">
+<div created="20180225185947135" creator="Robbie Antenesse" modified="20180225185957516" modifier="Robbie Antenesse" title="$:/state/tab-1105382082">
 <pre>$:/plugins/alamantus/sro/save</pre>
 </div>
 <div created="20180205182443231" creator="Robbie Antenesse" modified="20180206232822074" modifier="Robbie Antenesse" title="$:/state/tab-1342078386">
@@ -9091,10 +9134,10 @@ svg.tc-image-chevron-left {
 <div created="20180205182340604" creator="Robbie Antenesse" modified="20180205182347019" modifier="Robbie Antenesse" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20180205192014179" creator="Robbie Antenesse" modified="20180208193859745" modifier="Robbie Antenesse" title="$:/state/tab/moresidebar-401116514">
-<pre>$:/core/ui/MoreSideBar/All</pre>
+<div created="20180205192014179" creator="Robbie Antenesse" modified="20180209230038947" modifier="Robbie Antenesse" title="$:/state/tab/moresidebar-401116514">
+<pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20180205183953223" creator="Robbie Antenesse" modified="20180209150205998" modifier="Robbie Antenesse" title="$:/state/tab/sidebar--1835078512">
+<div created="20180205183953223" creator="Robbie Antenesse" modified="20180209235059254" modifier="Robbie Antenesse" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20180207161958934" creator="Robbie Antenesse" modified="20180207162001374" modifier="Robbie Antenesse" title="$:/state/tab/sidebar--2063883831">
@@ -9106,10 +9149,10 @@ svg.tc-image-chevron-left {
 <div created="20180205182014836" creator="R" modified="20180205182017468" modifier="Robbie Anteness" title="$:/status/UserName">
 <pre>Robbie Antenesse</pre>
 </div>
-<div list="Introduction [[Player's Handbook]] [[Success Scale]]" title="$:/StoryList">
+<div list="Introduction" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20180206040322621" creator="Robbie Antenesse" modified="20180208171008623" modifier="Robbie Antenesse" title="$:/temp/advancedsearch">
+<div created="20180206040322621" creator="Robbie Antenesse" modified="20180225185825239" modifier="Robbie Antenesse" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9617,7 +9660,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180206232824353" creator="Robbie Antenesse" modified="20180206232830327" modifier="Robbie Antenesse" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre></pre>
 </div>
-<div created="20180205191952756" creator="Robbie Antenesse" modified="20180208193800695" modifier="Robbie Antenesse" title="$:/temp/search">
+<div created="20180205191952756" creator="Robbie Antenesse" modified="20180225185624960" modifier="Robbie Antenesse" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180205182403455" creator="Robbie Antenesse" modified="20180205182403455" modifier="Robbie Antenesse" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -9741,14 +9784,11 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180205193244312" creator="Robbie Antenesse" modified="20180205193320495" modifier="Robbie Antenesse" title="$:/view">
 <pre>classic</pre>
 </div>
-<div color="#ff8000" created="20180205191804162" creator="Robbie Antenesse" modified="20180205191916926" modifier="Robbie Antenesse" title="Bestiary">
-<pre></pre>
-</div>
-<div created="20180205191624986" creator="Robbie Antenesse" modified="20180205191751444" modifier="Robbie Antenesse" tags="Book Bestiary" title="Bestiary (NPC &amp; Encounter Examples)">
+<div color="#ff8000" created="20180205191804162" creator="Robbie Antenesse" modified="20180209225921106" modifier="Robbie Antenesse" tags="Book" title="Bestiary">
 <pre>This book contains examples of possible non-playable characters or enemy encounters that a Game Master can use to confront their players. Characters can be used as-is from the book or can be modified by the Game Master's discretion.</pre>
 </div>
 <div created="20180205184351274" creator="Robbie Antenesse" modified="20180205192116929" modifier="Robbie Antenesse" tags="Information [[Player's Handbook]] [[Character Creation]]" title="Biography">
-<pre>To create your character, first you need a backstory, a personality, and an appearance. It’s often fun to model your character after yourself, but you can do whatever you’d like that fits within the specified game world.
+<pre>To create your character, first you need a backstory, a personality, and an appearance. It's often fun to model your character after yourself, but you can do whatever you'd like that fits within the specified game world.
 
 !! Backstory
 
@@ -9756,14 +9796,22 @@ The backstory can be either simple or in-depth, though in-depth stories are ofte
 
 !! Personality
 
-Once you have a backstory in place, it’s often easy to decide what kind of personality your character would have as a result of the backstory. Did their tragic backstory make them pessimistic or hopeful for a better future? Did them being bullied influence their sense of justice or tear down their perception of their worth? Don’t overthink it too much, just try to be true to what you think your character would be like.
+Once you have a backstory in place, it's often easy to decide what kind of personality your character would have as a result of the backstory. Did their tragic backstory make them pessimistic or hopeful for a better future? Did them being bullied influence their sense of justice or tear down their perception of their worth? Don't overthink it too much, just try to be true to what you think your character would be like.
 
 !! Appearance
 
-Finally, your character’s appearance is probably the least consequential beyond their size. Be as detailed as you want, but at least choose their height, weight, and body type. Smaller character’s will be able to squeeze into tighter spaces but won’t be able to see over tall walls, while larger characters will be able to stand their ground more easily but not be able to hide very well.</pre>
+Finally, your character's appearance is probably the least consequential beyond their size. Be as detailed as you want, but at least choose their height, weight, and body type. Smaller character's will be able to squeeze into tighter spaces but won't be able to see over tall walls, while larger characters will be able to stand their ground more easily but not be able to hide very well.</pre>
 </div>
 <div color="#7b4f0d" created="20180205185943731" creator="Robbie Antenesse" icon="$:/core/images/folder" modified="20180205191830169" modifier="Robbie Antenesse" title="Book">
 <pre></pre>
+</div>
+<div created="20180209230255552" creator="Robbie Antenesse" modified="20180209230301375" modifier="Robbie Antenesse" tags="[[Player's Handbook]]" title="Character Creation">
+<pre>Your character is your avatar in the game world, and it's also what makes playing the game fun and interesting! When you create your character, it's important to try to build them based on how the character would actually be within the world… you'll see what I mean.
+
+* [[Biography]]
+* [[Stats]]
+* [[Clothing &amp; Accessories]]
+* [[Hands &amp; Pockets (Inventory)]]</pre>
 </div>
 <div created="20180205195659295" creator="Robbie Antenesse" modified="20180205195723366" modifier="Robbie Antenesse" tags="[[Item Catalog]] List" title="Clothing - Feet">
 <pre>Types of clothes that can be work on the Feet of a character.
@@ -9790,21 +9838,44 @@ Anything your character is wearing does not take up inventory space.
 
 !! Clothing
 
-Clothes are wearable items that can be worn on the torso, legs, and feet. As a general rule, if you can wear it in real life, your character can wear it in game, with some general assumptions included (for example, specifying socks doesn’t matter if your character is wearing shoes unless they’re special socks that make your character happy).
+Clothes are wearable items that can be worn on the torso, legs, and feet. As a general rule, if you can wear it in real life, your character can wear it in game, with some general assumptions included (for example, specifying socks doesn't matter if your character is wearing shoes unless they're special socks that make your character happy).
 
 Simple clothes like jeans or shorts and a t-shirt with tennis shoes are good, basic clothes, and they provide you with the default inventory space and no other real advantages beyond being unencumbered in your movement. Cargo shorts or a dress will influence your inventory space as well, providing more or less space, respectively, but gaining other benefits and hindrances at the same time.
 
 !! Accessories
 
-Accessories are things like jewelry, hats, bags, or even armor that enhance your character’s stats and narrative influence in some way. Depending on the accessory, the places that your character can wear them is limited to their intended use. For example, your character can wear one necklace at a time, so if you want to add a new necklace’s ability but your character already wearing one, you can’t use another necklace as a bracelet or belt. See the Accessories section in the Item Catalog to find where an accessory can be equipped.
+Accessories are things like jewelry, hats, bags, or even armor that enhance your character's stats and narrative influence in some way. Depending on the accessory, the places that your character can wear them is limited to their intended use. For example, your character can wear one necklace at a time, so if you want to add a new necklace's ability but your character already wearing one, you can't use another necklace as a bracelet or belt. See the Accessories section in the Item Catalog to find where an accessory can be equipped.
 
 The characters that the GM places along the way in your game may react differently to different accessories, so be sure to dress for the occasion!</pre>
+</div>
+<div created="20180211054811693" creator="Robbie Antenesse" modified="20180220063236387" modifier="Robbie Antenesse" title="Combat">
+<pre>If you do choose to handle your conflicts with violence, combat is a fairly straightforward affair. Characters take turns choosing who and how they want to attack in the order of highest to lowest Gumption stat. If there's a tie in this stat, the GM will decide how the turn order will fall.
+
+When you attack someone or something in the game, you need to declare what you are trying to do and then make a [[contest roll|Success Scale]] against your opponent. Depending on what you are trying to do, you will be using certain stats to determine how many dice to roll and how to augment your roll. The GM will tell you the result of your attack unless you roll well enough to make the decision yourself. Once your attack is done, the next person in the list makes their move.
+
+Note that you can also choose to take any other action aside from attacking if you wish. Maybe you can defuse the situation instead! Or perhaps you have the ability to heal a partner's injuries—that's also something you can do on your turn!
+
+!! Timing
+
+Time spent differs from turn to turn depending on what action is done, but in general, most turns take about 5 seconds to complete in-game. Also, you can specify //when// your turn happens in relation to other turns that have already been taken, for example &quot;at the same time as&quot; another character is attacking one monster, you attack another, or right after a player knocked an enemy's shield away, you take advantage of the opening in their defense.
+
+!! Holding Your Turn
+
+Sometimes, you will want to wait to perform an action until something else happens, for example, to perform a group attack or a counterattack or some other complex maneuver. You may hold your turn at any time, but if you do not use your held turn before your next turn comes around, you will have lost that turn.
+
+!! Taking Damage
+
+When you are attacked and take damage, your character will receive injuries depending on where they were hit. See [[Health]] to learn about the health and injuries systems in GUTS+.
+
+!! Completing Combat
+
+Combat goes until the GM declares that the opponent has been defeated. This could be by knocking them out or making them run or otherwise convincing them to stop fighting.</pre>
 </div>
 <div color="#ffff00" created="20180205194603379" creator="Robbie Antenesse" modified="20180205194603379" modifier="Robbie Antenesse" title="Concept">
 <pre></pre>
 </div>
 <div created="20180205212137446" creator="Robbie Antenesse" modified="20180209042849585" modifier="Robbie Antenesse" tags="Concept Information Grimoire" title="Essence">
-<pre>Every living thing has a soul, or &quot;Essence,&quot; that is tightly connected to their body. It is completely invisible but absolutely there, but few people know about it because its bounds are your own body’s bounds. The Essence is what fills the spaces between your cells and makes you feel alive. There are a number of different makeups of Essense, some more dense or hotter or colder than others, but all Essense is composed of the same, tangible substance that is interwoven into the very being of its owner.
+<pre>Every living thing has a soul, or &quot;Essence,&quot; that is tightly connected to their body. It is completely invisible but absolutely there, but few people know about it because its bounds are your own body's bounds. The Essence is what fills the spaces between your cells and makes you feel alive. There are a number of different makeups of Essense, some more dense or hotter or colder than others, but all Essense is composed of the same, tangible substance that is interwoven into the very being of its owner.
 
 [img width=200 [./images/essence.svg]]
 
@@ -9812,7 +9883,7 @@ Being a part of your body, you can learn to control it if you can focus enough t
 
 [img width=250 [./images/essence_stretch.svg]]
 
-Notice how the essence in the picture is not surrounding the legs. That’s because it acts as a single, whole piece that cannot be broken or separated, so what is expanded outward must come from somewhere else. This starts from the feet because your essence originates from and is tethered to your head.
+Notice how the essence in the picture is not surrounding the legs. That's because it acts as a single, whole piece that cannot be broken or separated, so what is expanded outward must come from somewhere else. This starts from the feet because your essence originates from and is tethered to your head.
 
 The essense, though it seems ghostly, is completely corporeal, even though it is completely invisible and cannot be felt unless it is deliberately made to be felt. This combined with the fact that it is a whole, unbreakable piece means that it cannot pass through things.
 
@@ -9820,7 +9891,7 @@ The essense, though it seems ghostly, is completely corporeal, even though it is
 
 The essence must go around obstacles to reach things behind them, and if anything interrupts the movement of the essence (i.e. someone walks in front of you while you are stretching it toward something), it immediately vanishes from the point of the obstruction, retracting into your body and leaving the extent of your essence at where the obstruction begins.
 
-At first, your essence is round, blunt, and soft, like a large, unwieldy giant teddy bear hand that’s invisibly and unsensably coming from your body, and the size of your essence greatly limits its reach (at most, you could reach about half the length of your body before getting uncomfortable). But as you practice, you can make your essence denser, providing yourself with more to stretch, and you can hone its shape. It takes a lot of practice, especially since it is completely unseeable even to you as you use it, but eventually you can form it into finer shapes and points.
+At first, your essence is round, blunt, and soft, like a large, unwieldy giant teddy bear hand that's invisibly and unsensably coming from your body, and the size of your essence greatly limits its reach (at most, you could reach about half the length of your body before getting uncomfortable). But as you practice, you can make your essence denser, providing yourself with more to stretch, and you can hone its shape. It takes a lot of practice, especially since it is completely unseeable even to you as you use it, but eventually you can form it into finer shapes and points.
 
 [img width=400 [./images/essence_point.svg]]
 
@@ -9832,29 +9903,11 @@ You could even do more traditional magic things if you hone it enough. For insta
 
 [img width=390 [./images/essence_kill.svg]]
 
-Because of its physical nature, however, it would not allow you to actually read minds or anything like that. You could, however, use it to sense someone else’s essence and learn how to distinguish emotions. Even though you can’t see your essence, you can feel what it interacts with, though not in the nerve🡢brain sort of way that our bodies feel.
+Because of its physical nature, however, it would not allow you to actually read minds or anything like that. You could, however, use it to sense someone else's essence and learn how to distinguish emotions. Even though you can't see your essence, you can feel what it interacts with, though not in the nerve🡢brain sort of way that our bodies feel.
 
 [img width=350 [./images/essence_feel.svg]]
 
-With enough focus, control, and training, you could do just about anything, leading to more traditional fantasy magic. You could use some kind of language to help yourself focus, leading to “magic words”, but you wouldn’t need to; it’s naturally limited in scope and power; and its power is already there for you to utilize if only you focus hard enough.</pre>
-</div>
-<div _canonical_uri="http://78.media.tumblr.com/1dc77b412a4310cb805d8b96d564002b/tumblr_inline_o3stq1UzMj1rh42a7_500.png" created="20180205212603773" creator="Robbie Antenesse" modified="20180205212620667" modifier="Robbie Antenesse" tags="Grimoire" title="essense_feel.png" type="image/png">
-<pre></pre>
-</div>
-<div _canonical_uri="http://78.media.tumblr.com/115056f8c16a10dd94db9fcbe091d7aa/tumblr_inline_o3stf9IlzK1rh42a7_500.png" created="20180205212321382" creator="Robbie Antenesse" modified="20180205212346987" modifier="Robbie Antenesse" tags="Grimoire" title="essense_grab.png" type="image/png">
-<pre></pre>
-</div>
-<div _canonical_uri="http://78.media.tumblr.com/5c21f013bc6e28f259ec67bc601f0929/tumblr_inline_o3stlomjXB1rh42a7_500.png" created="20180205212443696" creator="Robbie Antenesse" modified="20180205212505545" modifier="Robbie Antenesse" tags="Grimoire" title="essense_kill.png" type="image/png">
-<pre></pre>
-</div>
-<div _canonical_uri="http://78.media.tumblr.com/d1bf72604acf78f753fb1b3b3abb5910/tumblr_inline_o3stca8FoR1rh42a7_500.png" created="20180205212207243" creator="Robbie Antenesse" modified="20180205212242135" modifier="Robbie Antenesse" tags="Grimoire" title="essense_point.png" type="image/png">
-<pre></pre>
-</div>
-<div _canonical_uri="http://78.media.tumblr.com/e26489551b1b54957692bfe32d5b1a16/tumblr_inline_o3ssp1Q79u1rh42a7_400.png" created="20180205211440533" creator="Robbie Antenesse" modified="20180205211509863" modifier="Robbie Antenesse" tags="Grimoire" title="essense_stretch.png" type="image/png">
-<pre></pre>
-</div>
-<div _canonical_uri="http://78.media.tumblr.com/59e1ed3b004f40b646748125917db485/tumblr_inline_o3ssyb4zsY1rh42a7_500.png" created="20180205211900460" creator="Robbie Antenesse" modified="20180205211944744" modifier="Robbie Antenesse" tags="Grimoire" title="essense_wall.png" type="image/png">
-<pre></pre>
+With enough focus, control, and training, you could do just about anything, leading to more traditional fantasy magic. You could use some kind of language to help yourself focus, leading to &quot;magic words&quot;, but you wouldn't need to; it's naturally limited in scope and power; and its power is already there for you to utilize if only you focus hard enough.</pre>
 </div>
 <div created="20180208012616394" creator="Robbie Antenesse" modified="20180208020852447" modifier="Robbie Antenesse" tags="[[Player's Handbook]] Stats Examples" title="Example Skills">
 <pre>Here is a list of example stats and the kinds of skills they could potentially bestow.
@@ -9870,32 +9923,30 @@ Could bestow the ability to:
 <div created="20180205194510167" creator="Robbie Antenesse" modified="20180205194549614" modifier="Robbie Antenesse" tags="Information Concept" title="Game Master">
 <pre>The Game Master (GM for short) is the narrator and controller of the game world.</pre>
 </div>
-<div created="20180205190348556" creator="Robbie Antenesse" modified="20180205190821925" modifier="Robbie Antenesse" tags="Book [[GM Handbook]]" title="Game Master's Handbook">
-<pre>This guide will walk you through the concepts of how the game world works and what your role as the Game Master entails. As Game Master (GM), your role is architect, narrator, decider, intermediary, friend, enemy, and anything else that is required for the players to navigate the game world. It's a big responsibility, but it's also a lot of fun!</pre>
+<div color="#ff0000" created="20180205190447080" creator="Robbie Antenesse" modified="20180224203209410" modifier="Robbie Antenesse" tags="Book" title="Game Master's Handbook">
+<pre>This guide will walk you through the concepts of how the game world works and what your role as the [[Game Master]] entails. As Game Master (GM), your role is architect, narrator, decider, intermediary, friend, enemy, and anything else that is required for the players to navigate the game world. It's a big responsibility, but it's also a lot of fun!
+
+!! SOIL for Your Game Plant
+
+{{SOIL}}</pre>
 </div>
-<div color="#ff0000" created="20180205190447080" creator="Robbie Antenesse" modified="20180205191920070" modifier="Robbie Antenesse" title="GM Handbook">
-<pre></pre>
-</div>
-<div color="#800080" created="20180205191612391" creator="Robbie Antenesse" modified="20180205191612391" modifier="Robbie Antenesse" title="Grimoire">
-<pre></pre>
-</div>
-<div created="20180205191520005" creator="Robbie Antenesse" modified="20180209050050822" modifier="Robbie Antenesse" tags="Book Grimoire" title="Grimoire (Magic Guide)">
+<div color="#800080" created="20180205191520005" creator="Robbie Antenesse" modified="20180209230443677" modifier="Robbie Antenesse" tags="Book" title="Grimoire">
 <pre>This is a guide to the Magic system in GUTS+.
 
 !! Basics
 Magic in GUTS+ depends entirely on the concept of [[Essence]]. Every living creature is able to utilize their Essence, but it requires a great amount of focus and control to use it. So long as you have an ability that can harness their Essence, you can manipulate it to do a variety of interesting things.</pre>
 </div>
-<div created="20180208055309776" creator="Robbie Antenesse" modified="20180208061709514" modifier="Robbie Antenesse" tags="[[Playing the Game]] [[Player's Handbook]] Information" title="Handling Conflicts">
-<pre>Conflict is the cornerstone of plot. The game you are playing will likely have a lot of different conflicts, often happening at the same time, as well as a lot of different kinds of conflicts. Whether you are trying to find someone’s lost cat or trying to work against a dictator, there are many different ways to go about handling conflict.
-
-Many role-playing games make heavy use of combat to overcome conflicts, but it might not always be the best option. Try different things to see what the best outcome might be. The GM should be flexible enough to handle whatever you throw at them and respond accordingly. Sometimes, though, combat really is the only option.
+<div created="20180208055309776" creator="Robbie Antenesse" modified="20180220061315726" modifier="Robbie Antenesse" tags="[[Playing the Game]] [[Player's Handbook]] Information" title="Handling Conflicts">
+<pre>Conflict is the cornerstone of plot. The game you are playing will likely have a lot of different conflicts, often happening at the same time, as well as a lot of different kinds of conflicts. Whether you are trying to find someone's lost cat or trying to work against a dictator, there are many different ways to go about handling conflict.
 
 Conflicts are handled using a combination of die rolls and logical appeals made to the GM. When an appeal is not accepted by the GM, you must roll a number D6s to determine your success. See the [[Success Scale]] to understand how success is determined. When you begin, you will only be rolling 1 D6, but as your character grows stronger, you will need to roll more to keep up with the rising difficulty level.
 
-* [[Combat]]</pre>
+Many role-playing games make heavy use of combat to overcome conflicts, but it might not always be the best option. Try different things to see what the best outcome might be. The GM should be flexible enough to handle whatever you throw at them and respond accordingly. If you come across someone acting strangely, instead of trying to beat the information out of them, maybe try to ask them what's wrong.
+
+Sometimes, though, [[Combat]] really is the only option.</pre>
 </div>
 <div created="20180205185315295" creator="Robbie Antenesse" modified="20180205192046673" modifier="Robbie Antenesse" tags="Information [[Player's Handbook]] [[Character Creation]]" title="Hands &amp; Pockets (Inventory)">
-<pre>Your character’s inventory is a limited collection of items that they are able to carry with them. By default, your character can carry 2 items in their Hands (one held in each hand) plus 8 items in most Pockets, totaling 10 items. The player’s inventory excludes whatever they are wearing (i.e. clothing, accessories, and equipment). Items in your Hands and Pockets are interchangeable, meaning that if you have only 8 items in your inventory, your hands are considered empty unless you are specifically holding something.
+<pre>Your character's inventory is a limited collection of items that they are able to carry with them. By default, your character can carry 2 items in their Hands (one held in each hand) plus 8 items in most Pockets, totaling 10 items. The player's inventory excludes whatever they are wearing (i.e. clothing, accessories, and equipment). Items in your Hands and Pockets are interchangeable, meaning that if you have only 8 items in your inventory, your hands are considered empty unless you are specifically holding something.
 
 While you are creating your character, you may choose up to 5 basic items for your character to be holding.
 
@@ -9905,7 +9956,7 @@ You can get creative with your Pockets, however: if your character is wearing a 
 
 !! Bundles
 
-Items in the player’s inventory do not stack, meaning that if your character is holding 2 sandwiches, those sandwiches each take 1 space. The only way to stack items is to bundle them up. For example, if your character has 2 sandwiches, they can tie the sandwiches together to create a bundle of 2 sandwiches.
+Items in the player's inventory do not stack, meaning that if your character is holding 2 sandwiches, those sandwiches each take 1 space. The only way to stack items is to bundle them up. For example, if your character has 2 sandwiches, they can tie the sandwiches together to create a bundle of 2 sandwiches.
 
 You can only bundle up identical items, and items that are bundled cannot be used until they are un-bundled into their respective items. You can remove just one item from the bundle in order to use it so long as you have space for it in your hands. If your inventory is full, you cannot un-bundle an item until you make space for it.
 
@@ -9917,7 +9968,7 @@ You can augment your inventory space by accessorizing your character a bag of so
 
 The type of bag being used is merely cosmetic, but remember that accessories can affect how other characters interact with your character in the game world.</pre>
 </div>
-<div created="20180206203108531" creator="Robbie Antenesse" modified="20180209071717915" modifier="Robbie Antenesse" tags="Information [[Playing the Game]] [[Player's Handbook]]" title="Health">
+<div created="20180206203108531" creator="Robbie Antenesse" modified="20180220064551355" modifier="Robbie Antenesse" tags="Information [[Playing the Game]] [[Player's Handbook]]" title="Health">
 <pre>Most role-playing game systems utilize a &quot;hit points&quot; (HP) system, but in GUTS+, a character's health is determined by the number of injuries sustained to various parts of their body and the strain placed upon their mind and body.
 
 !! Injuries
@@ -9926,19 +9977,34 @@ The following chart shows the areas of the body that can be injured and how many
 
 [img width=400 [./images/injury-chart.svg]]
 
+Whenever you take an injury, mark it on your character sheet. If a part of the body sustains the maximum number of Minor injuries that it can have, the next Minor injury instantly becomes a Major injury, and if the maximum number of Major injuries is taken, use of that body part becomes limited and will affect what your character can do. If you receive any Major injuries beyond the maximum number, you lose use of that body part completely. Losing use of either of your character's Hands reduces your [[inventory space|Hands &amp; Pockets (Inventory)]], and &quot;losing the use of&quot; your character's Head means your character immediately becomes unconscious.
+
+If your character receives //more than// 6 Major (non-Head) injuries (i.e. 7 or more), they will fall unconscious. If they are not recovered before enough time passes, they will die, so be careful!
+
 !! Strain
+
 In addition to Injuries, performing a taxing action for a sustained period of time can add Strain to your character. If your character receives more than 10 points of Strain before they are able to remove any Strain, they can either receive injuries or be knocked unconscious from exertion.
 
+Any additional strain received from performing actions inflicts a Minor injury to the body part that is performing it. If you are using [[magic|Grimoire]], strain received inflicts injuries to the Head.
+
 !! Recovery
-??</pre>
+
+Recovering from an injury is a relatively slow process if not deliberately focused on. Untreated, A minor injury will heal at the rate of 1 injury per in-game day—you choose what injury you wish to be healed—while a major injury will heal at the rate of 1 injury per 5 in-game days.
+
+If you wish to focus on allowing your injuries to heal, resting will allow your injuries to heal twice as fast: 1 minor injury per 1/2 day and 1 major injury per 2 1/2 days. If you or someone in your group has any sort of medical stats, then they can help treat your wound to speed up recovery even more. Some treatments will be instantaneous while others might speed it up to just a couple of hours for recovery. Eating food can also help heal injuries.
+
+Strain is slightly different: once the source of strain is removed, it begins going down immediately at a rate of approximately 1 point per minute. Depending on the type of strain and how soon you resume the stressful task, your strain might be removed all at once or after every couple of turns if in [[Combat]].</pre>
+</div>
+<div created="20180220130545858" creator="Robbie Antenesse" modified="20180220130652030" modifier="Robbie Antenesse" tags="SOIL [[Game Master's Handbook]]" title="Improvising">
+<pre>Improvisation is an important skill to have because it allows you to quickly react to whatever your players do in the game.</pre>
 </div>
 <div color="#88c4ff" created="20180205190207195" creator="Robbie Antenesse" icon="$:/core/images/help" modified="20180205191902438" modifier="Robbie Antenesse" title="Information">
 <pre></pre>
 </div>
-<div created="20180205182852865" creator="Robbie Antenesse" list="" modified="20180205192940077" modifier="Robbie Antenesse" title="Introduction">
+<div created="20180205182852865" creator="Robbie Antenesse" list="" modified="20180209232331712" modifier="Robbie Antenesse" title="Introduction">
 <pre>Welcome to the wonderful world of GUTS, where players and game masters work together to progress the story within the game world.
 
-The name “GUTS+” is an acronym for the base character stats in the game: Gumption, Utility, Thought, and Slyness, plus additional custom stats that each player chooses to round out their character.
+The name &quot;GUTS+&quot; is an acronym for the base character stats in the game: Gumption, Utility, Thought, and Slyness, plus additional custom stats that each player chooses to round out their character.
 
 Gameplay is heavily narrative-based and relies on a Game Master who is comfortable either improvising frequently to give players the smoothest narrative experience possible or railroading their players into following a specific path for the sake of keeping the story solid.
 The tone of the rules and scenarios that use the GUTS+ System are heavily inspired by the spirit of the Earthbound/Mother series from Nintendo, and is therefore open to quirky or silly facets while still allowing serious themes and moments. This provides a fair amount of flexibility to GMs and players to either tell whatever build whatever kind of world they want or tell a story in existing worlds using established tropes.
@@ -9946,8 +10012,8 @@ The tone of the rules and scenarios that use the GUTS+ System are heavily inspir
 !! [[Player's Handbook]]
 !! [[Game Master's Handbook]]
 !! [[Item Catalog]]
-!! [[Grimoire (Magic Guide)]]
-!! [[Bestiary (NPC &amp; Encounter Examples)]]</pre>
+!! [[Grimoire (Magic Guide)|Grimoire]]
+!! [[Bestiary (NPC &amp; Encounter Examples)|Bestiary]]</pre>
 </div>
 <div color="#0000ff" created="20180205190936816" creator="Robbie Antenesse" modified="20180205192908461" modifier="Robbie Antenesse" tags="Book [[Item Catalog]]" title="Item Catalog">
 <pre>This book contains references to possible item types and abilities. The GM or game world may specify any combinations or specificities of any given item a player might receive during the game, but the core possibilities should help you understand what an item might be capable of.
@@ -9972,36 +10038,53 @@ The tone of the rules and scenarios that use the GUTS+ System are heavily inspir
 * ''Pocket Size:'' {{!!pocket-size}}
 * ''Bonus:'' {{!!bonus}}</pre>
 </div>
+<div created="20180220130704459" creator="Robbie Antenesse" modified="20180220130839132" modifier="Robbie Antenesse" tags="SOIL [[Game Master's Handbook]]" title="Learning">
+<pre>&quot;Learning&quot; refers not just to understanding the tiles of the GUTS+ System, but also to learning who your characters are and what has happened so you can bring consistency to the game world.</pre>
+</div>
 <div color="#ffcab0" created="20180205194628384" creator="Robbie Antenesse" modified="20180205194628384" modifier="Robbie Antenesse" title="List">
 <pre></pre>
 </div>
 <div created="20180206203241321" creator="Robbie Antenesse" modified="20180206203454806" modifier="Robbie Antenesse" tags="Concept" title="nDs">
 <pre>The formula representing how many of what type of die to roll (n dice with s sides). For example, 2D6 means a roll of 2 six-sided dice.</pre>
 </div>
-<div color="#008000" created="20180205183104963" creator="Robbie Antenesse" list="" modified="20180209053824769" modifier="Robbie Antenesse" tags="[[Player's Handbook]] Book" title="Player's Handbook">
+<div created="20180220130458665" creator="Robbie Antenesse" modified="20180224210036470" modifier="Robbie Antenesse" tags="SOIL [[Game Master's Handbook]]" title="Outlining">
+<pre>Outlining is the key to not burning out as a GM. In a lot of games, you have a map and a game world and story all planned out. It takes a lot of work and time, and it can all fall apart if your players insist on going a way you hadn't planned for. On the other side, if you build a story that clearly follows a very linear path, your players will feel like they don't have any agency in the game. This can all be solved without over-planning every element of the game and getting exhausted.
+
+Outlining is the skill of taking specific story beats and locations and stringing them together so loosely that the path to reach them does not matter and feels natural to the players. It also includes creating enough intermediary spaces to allow players to explore freely without feeling like they are being railroaded, even if they partially are. Using your outline, you can move the world around the players, creating the path you want the players to follow while still allowing them to explore freely.
+
+Let's say, for example, that you have a start location, a middle location, and an end location that you want your players to visit. If you create intermediary spaces where your players can wander if they need to, then you can place your middle and end locations anywhere your players go. So if the players want to go east, then you as the GM can know that the end will be that direction. If they double back and go a little bit farther west, you can simply move that end location to wherever it needs to be. In other words, all roads lead to the end.
+
+This obviously becomes tricky when you have a clear end goal like an evil scientist's tower or a corrupted guardian giant that's visible from the distance, but if you're creative enough, you can either convince your players to go confront it or otherwise make the path they take always curve toward the end location as they keep moving.</pre>
+</div>
+<div color="#008000" created="20180205183104963" creator="Robbie Antenesse" list="" modified="20180209230326708" modifier="Robbie Antenesse" tags="Book" title="Player's Handbook">
 <pre>This guide will walk you through the process of creating your character and navigating the game world. The rest is pretty much up to your [[Game Master]] and you simply need to play within the world that your character has been placed into.
 
 [ext[Character Sheet|./files/GUTS+_Character-Sheet.pdf]]
 
 !! Character Creation
-Your character is your avatar in the game world, and it’s also what makes playing the game fun and interesting! When you create your character, it’s important to try to build them based on how the character would actually be within the world… you’ll see what I mean.
-
-* [[Biography]]
-* [[Stats]]
-* [[Clothing &amp; Accessories]]
-* [[Hands &amp; Pockets (Inventory)]]
+{{Character Creation}}
 
 !! Playing the Game
-Playing the GUTS+ System requires only the occasional [[1D6|nDs]] roll and a bit of imagination.
+{{Playing the Game}}
+
+!! Getting Stronger
+Rather than using level numbers to determine what can be done by a character, skills are determined exclusively by the number of stat points assigned to the character's stats.</pre>
+</div>
+<div created="20180209230335036" creator="Robbie Antenesse" modified="20180220061402272" modifier="Robbie Antenesse" tags="[[Player's Handbook]]" title="Playing the Game">
+<pre>Playing the GUTS+ System requires only the occasional [[1D6|nDs]] roll and a bit of imagination.
 
 * [[The Basics]]
 * [[Handling Conflicts]]
 ** [[Success Scale]]
-** [[Combat]]
-*** [[Health]]
+* [[Combat]]
+** [[Health]]</pre>
+</div>
+<div created="20180220130253320" creator="Robbie Antenesse" modified="20180224204042571" modifier="Robbie Antenesse" tags="SOIL [[Game Master's Handbook]]" title="Signposting">
+<pre>To ensure that your group of players always knows what options are available to them, it is important to become good at signposting.
 
-!! Getting Stronger
-Rather than using level numbers to determine what can be done by a character, skills are determined exclusively by the number of stat points assigned to the character's stats.</pre>
+Signposting is the skill of explaining details in such a way that the players know how to interact with something or know that something can be interacted with to learn more about it without explicitly telling them. This can be as simple as only describing interactable or interesting items in the room or as complex as describing the room in full detail but making the interesting items more tantalizing than anything else. It can also be something like an obvious tick in an NPC's dialogue.
+
+As long as the players know what is available for them to do, you are doing signposting right.</pre>
 </div>
 <div bonus="none" created="20180205195733264" creator="Robbie Antenesse" item-class="basic" modified="20180205195904584" modifier="Robbie Antenesse" tags="[[Item Catalog]] Clothing Feet" title="Sneakers" worn-on="feet">
 <pre>A basic feet clothing item. Can be styled however a player would like. Allows character to comfortably walk on hard or uneven ground.
@@ -10010,34 +10093,43 @@ Rather than using level numbers to determine what can be done by a character, sk
 * ''Worn On:'' {{!!worn-on}}
 * ''Bonus:'' {{!!bonus}}</pre>
 </div>
+<div created="20180224203213222" creator="Robbie Antenesse" modified="20180224203228795" modifier="Robbie Antenesse" tags="[[Game Master's Handbook]]" title="SOIL">
+<pre>As the GM, you are both the gardener and the place from which your game's story grows. Whether you want to grow a beautiful story flower or a towering epic tree, it's important for you as the GM to cultivate your SOIL skills:
+
+* [[Signposting]]
+* [[Outlining]]
+* [[Improvising]]
+* [[Learning]]</pre>
+</div>
 <div created="20180205184441108" creator="Robbie Antenesse" modified="20180208021439922" modifier="Robbie Antenesse" tags="Information [[Player's Handbook]] [[Character Creation]]" title="Stats">
-<pre>Once you know a little bit about your character, it’s time to choose your stats. There are four base stats that every character has:
+<pre>Once you know a little bit about your character, it's time to choose your stats. There are four base stats that every character has:
 
-* ''Gumption:'' The character’s go-getter-ness—their willingness to rush in, their ability to last, their overall drive.
-* ''Utility:'' The character’s handiness—their ability to do things, their breadth of skill, their overall competence to perform.
-* ''Thought:'' The character’s brains—how much they know, how well they’re able to apply what they know, their overall smarts.
-* ''Slyness:'' The character’s ability to go with the flow—their sneakiness, their conversationalism, their overall elegance.
+* ''Gumption:'' The character's go-getter-ness—their willingness to rush in, their ability to last, their overall drive.
+* ''Utility:'' The character's handiness—their ability to do things, their breadth of skill, their overall competence to perform.
+* ''Thought:'' The character's brains—how much they know, how well they're able to apply what they know, their overall smarts.
+* ''Slyness:'' The character's ability to go with the flow—their sneakiness, their conversationalism, their overall elegance.
 
-You must also create at one custom base stat of your choice based on their biography. This can be anything from “Technology” (to gain extra proficiency in using computers) to “Acrobatics” (to gain the ability to be extra graceful) to “Multilingualism” (to gain the ability to communicate in different languages). This can be anything that makes sense with your character.
+You must also create at one custom base stat of your choice based on their biography. This can be anything from &quot;Technology&quot; (to gain extra proficiency in using computers) to &quot;Acrobatics&quot; (to gain the ability to be extra graceful) to &quot;Multilingualism&quot; (to gain the ability to communicate in different languages). This can be anything that makes sense with your character.
 
-In addition to the first, mandatory custom stat, you can create up to 3 additional stats that fit your character’s back story or personality.
+In addition to the first, mandatory custom stat, you can create up to 3 additional stats that fit your character's back story or personality.
 
-Once you’ve picked your custom stats, it’s time to assign your stats points from a pool of 10 points. Apply your points in a way that makes the most sense to your character. For example, if your character is a poet, their Thought and Slyness might be higher than their other stats, whereas a mechanic might have high Utility.
+Once you've picked your custom stats, it's time to assign your stats points from a pool of 10 points. Apply your points in a way that makes the most sense to your character. For example, if your character is a poet, their Thought and Slyness might be higher than their other stats, whereas a mechanic might have high Utility.
 
 Your 5 base stats must all have at least 1 point assigned, but you may optionally set any of your additional stats to 0 and wait until you earn more stat points later to be able to utilize it.
 
 !! Skills &amp; Proficiencies
 
-Your character’s skills and proficiencies are directly tied to the stats you have chosen above. If one of your character’s additional stats is “Knives,” for example, then the skill level is tied to how skilled your character is at using knives and influences what your character can do with them. If your character is trying to perform a skill or use a tool that they do not have proficiency with, then one of the GUTS stats will stand in at the GM’s discretion.
+Your character's skills and proficiencies are directly tied to the stats you have chosen above. If one of your character's additional stats is &quot;Knives,&quot; for example, then the skill level is tied to how skilled your character is at using knives and influences what your character can do with them. If your character is trying to perform a skill or use a tool that they do not have proficiency with, then one of the GUTS stats will stand in at the GM's discretion.
 
 [[Example Skills]]</pre>
 </div>
-<div created="20180208061730405" creator="Robbie Antenesse" modified="20180209155045123" modifier="Robbie Antenesse" tags="Information [[Playing the Game]] [[Player's Handbook]]" title="Success Scale">
-<pre>How successful your character is at performing a certain action is determined by what number you roll on a [[D6|nDs]] die. Occasionally, the DM will have you roll for a particular stat. In these cases, roll 1D6 plus an additional D6 per 2 stat points your character has—the number of dice you roll increases the range factor for each success (or failure) category.
+<div created="20180208061730405" creator="Robbie Antenesse" modified="20180220064641193" modifier="Robbie Antenesse" tags="Information [[Playing the Game]] [[Player's Handbook]]" title="Success Scale">
+<pre>How successful your character is at performing a certain action is determined by what number you roll on a [[D6|nDs]] die. Occasionally, the DM will have you roll for a particular stat. In these cases, roll 1D6 plus an additional D6 per 3 stat points your character has—the number of dice you roll increases the range factor for each success (or failure) category.
 
 There are 2 types of success rolls: checks and contests.
 
 !! Check
+
 Check rolls are what determine your success at performing actions that do not involve other (unwilling) living creatures. The scale for success is:
 
 &quot;&quot;&quot;
@@ -10052,6 +10144,7 @@ Check rolls are what determine your success at performing actions that do not in
 As mentioned above, the scale changes for each additional die you roll. For example, if your character has 3 stat points in Gumption, roll 2D6 and scale the numbers up: 1–2 = 1, 3–4 = 2, 5–6 = 3, 7–8 = 4, 9–10 = 5, 11–12 = 6. Notice that with 2D6 it is impossible to roll 1, which means that as your character grows more experienced, they are less and less likely to make a roll that results in a negative impact.
 
 !! Contest
+
 If you need to perform an action against an unwilling member, you will need to roll a contest against them. Both you and your opponent roll the relevant number of dice, and you subtract their die roll from yours. The success scale is as follows:
 
 &quot;&quot;&quot;
@@ -10068,6 +10161,7 @@ Anything above or below these values counts as the extreme end. Scaling Contest 
 For example, if you rolls 1D6 and you get a 6 and your opponent rolls 2D6 and they get a 4, the contest value is 2, but the scale value is only 1 because your opponent rolled two D6's. On the other side, if you had rolled 2D6 and got 4 and your opponent got a 6 from whatever they rolled, the contest value is -2, but the scale value is only -1 because you rolled two D6's.
 
 !! &quot;Near Success&quot;
+
 Whenever you roll a 3 check or a 0 contest, the result is at the discretion of the GM. They may take the opportunity to advance the situation somehow or they may decide that you need to roll better next time based on the context. Feel free to plead your case with the GM, though!</pre>
 </div>
 <div bonus="none" created="20180205194734000" creator="Robbie Antenesse" item-class="basic" modified="20180205195628623" modifier="Robbie Antenesse" tags="[[Item Catalog]] Clothing Torso" title="T-Shirt" worn-on="torso">
@@ -10078,13 +10172,13 @@ Whenever you roll a 3 check or a 0 contest, the result is at the discretion of t
 * ''Bonus:'' {{!!bonus}}</pre>
 </div>
 <div created="20180208052607955" creator="Robbie Antenesse" modified="20180208054955746" modifier="Robbie Antenesse" tags="Information [[Player's Handbook]] [[Playing the Game]]" title="The Basics">
-<pre>Role playing is a bit like collaborating with a group to tell a story with special rules in place that prevent the story from going too far off the rails. The [[GM|Game Master]] sets up the world and the situation, and it’s up to you and your fellow players to work through that situation together using your characters.
+<pre>Role playing is a bit like collaborating with a group to tell a story with special rules in place that prevent the story from going too far off the rails. The [[GM|Game Master]] sets up the world and the situation, and it's up to you and your fellow players to work through that situation together using your characters.
 
-Oftentimes, the GM will start a play session by describing a scene and some kind of circumstance that would bring your characters together for an adventure. It’s up to you as the players to ask questions both in character ([[IC|In Character]]) and out of character ([[OOC|Out of Character]]) and fill in the blanks so you can be as successful as possible when moving forward.
+Oftentimes, the GM will start a play session by describing a scene and some kind of circumstance that would bring your characters together for an adventure. It's up to you as the players to ask questions both in character ([[IC|In Character]]) and out of character ([[OOC|Out of Character]]) and fill in the blanks so you can be as successful as possible when moving forward.
 
-When your character asks questions and tries to perform certain actions, the GM will sometimes ask you to make a success check. Depending on what you are trying to roll success for, your stats may influence the outcome, raising your roll total by the value of the stat—the GM should tell you which stat to use if you don’t know.
+When your character asks questions and tries to perform certain actions, the GM will sometimes ask you to make a success check. Depending on what you are trying to roll success for, your stats may influence the outcome, raising your roll total by the value of the stat—the GM should tell you which stat to use if you don't know.
 
-You will occasionally roll for success //against// a non-playable character ([[NPC|Non-Playable Character]]). The character being rolled against is the &quot;defender.&quot; Both you and the DM will roll, and whoever’s roll is higher wins. If you both roll the same number, then the person who is trying to succeed wins the roll.
+You will occasionally roll for success //against// a non-playable character ([[NPC|Non-Playable Character]]). The character being rolled against is the &quot;defender.&quot; Both you and the DM will roll, and whoever's roll is higher wins. If you both roll the same number, then the person who is trying to succeed wins the roll.
 
 As you continue playing, your characters will grow stronger, and the game will get harder. Just keep moving forward, and you'll win eventually!</pre>
 </div>
