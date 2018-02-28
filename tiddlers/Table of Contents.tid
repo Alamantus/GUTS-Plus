@@ -1,11 +1,27 @@
 created: 20180228183850144
-modified: 20180228183939759
+modified: 20180228193620144
 tags: 
 title: Table of Contents
 type: text/vnd.tiddlywiki
 
-* [[Player's Handbook]]
-* [[Game Master's Handbook]]
-* [[Item Catalog]]
-* [[Grimoire (Magic Guide)|Grimoire]]
-* [[Bestiary (NPC & Encounter Examples)|Bestiary]]
+!!! [[Player's Handbook]]
+
+* Character Creation
+** [[Biography]]
+** [[Stats]]
+** [[Clothing & Accessories]]
+** [[Hands & Pockets (Inventory)]]
+* Playing the Game
+** [[The Basics]]
+** [[Handling Conflicts]]
+*** [[Success Scale]]
+** [[Combat]]
+*** [[Health]]
+
+!!! [[Game Master's Handbook]]
+
+!!! [[Item Catalog]]
+
+!!! [[Grimoire (Magic Guide)|Grimoire]]
+
+!!! [[Bestiary (NPC & Encounter Examples)|Bestiary]]
