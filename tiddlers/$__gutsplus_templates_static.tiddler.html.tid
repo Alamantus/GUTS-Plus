@@ -1,6 +1,6 @@
 created: 20180228172009898
 creator: Robbie Antenesse
-modified: 20180228183837327
+modified: 20180228203642215
 modifier: Robbie Antenesse
 tags: 
 title: $:/gutsplus/templates/static.tiddler.html
@@ -30,7 +30,7 @@ type: text/vnd.tiddlywiki
 <div class="tc-sidebar-scrollable" style="overflow: auto;">
 <div class="tc-sidebar-header">
 <h1 class="tc-site-title">
-<a class="" title="Restart from the beginning" aria-label="home">
+<a href="index.html" class="" title="Restart from the beginning" aria-label="home">
 `{{$:/SiteTitle||$:/core/templates/html-tiddler}}`
 </a>
 </h1>
