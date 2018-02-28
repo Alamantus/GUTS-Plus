@@ -9,6 +9,7 @@
   "scripts": {
     "serve": "tiddlywiki --server",
     "load": "tiddlywiki . --load ./output/GUTS+_tiddlywiki.html",
+    "build": "npm run build:single && npm run build:public",
     "build:single": "tiddlywiki . --build tiddly",
     "build:public": "tiddlywiki . --build public"
   },
