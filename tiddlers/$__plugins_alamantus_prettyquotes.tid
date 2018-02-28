@@ -9,14 +9,14 @@ plugin-type: plugin
 revision: 0
 title: $:/plugins/alamantus/prettyquotes
 type: application/json
-version: 1.0.1
+version: 1.0.2
 
 {
     "tiddlers": {
         "$:/plugins/alamantus/prettyquotes/parser.js": {
             "created": "20180209235256544",
             "creator": "Robbie Antenesse",
-            "text": "/*\\\ntitle: $:/core/modules/parsers/wikiparser/rules/prettyquotes.js\ntype: application/javascript\nmodule-type: wikirule\n\nWiki text inline rule for dashes. For example:\n\n```\nThis is an left single quote: ‘\nThis is an right single quote: ’\n\nThis is an left double quote: “\nThis is an right double quote: ”\n```\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nexports.name = \"prettyquotes\";\nexports.types = {inline: true};\n\nexports.init = function(parser) {\n\tthis.parser = parser;\n\t// Regexp to match\n\tthis.matchRegExp = /(\\s\")|(\"\\s)|(\\s')|(')/mg;\n};\n\nexports.parse = function() {\n\t// Move past the match\n\tthis.parser.pos = this.matchRegExp.lastIndex;\n\t// default to &rsquo;\n\tvar quote = \"’\";\n\tif (this.match[1] !== undefined) {\n\t\tquote = \" “\";\n\t} else if (this.match[2] !== undefined) {\n\t\tquote = \"” \";\n\t} else if (this.match[3] !== undefined) {\n\t\tquote = \" ‘\";\n\t}\n\treturn [{\n\t\ttype: \"entity\",\n\t\tentity: quote\n\t}];\n};\n\n})();\n",
+            "text": "/*\\\ntitle: $:/core/modules/parsers/wikiparser/rules/prettyquotes.js\ntype: application/javascript\nmodule-type: wikirule\n\nWiki text inline rule for dashes. For example:\n\n```\nThis is an left single quote: ‘\nThis is an right single quote: ’\n\nThis is an left double quote: “\nThis is an right double quote: ”\n```\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nexports.name = \"prettyquotes\";\nexports.types = {inline: true};\n\nexports.init = function(parser) {\n\tthis.parser = parser;\n\t// Regexp to match\n\tthis.matchRegExp = /(\\s\")|(\"\\s)|(\\s(?!'')')|(?!'')(')/mg;\n};\n\nexports.parse = function() {\n\t// Move past the match\n\tthis.parser.pos = this.matchRegExp.lastIndex;\n\t// default to &rsquo;\n\tvar quote = \"’\";\n\tif (this.match[1] !== undefined) {\n\t\tquote = \" “\";\n\t} else if (this.match[2] !== undefined) {\n\t\tquote = \"” \";\n\t} else if (this.match[3] !== undefined) {\n\t\tquote = \" ‘\";\n\t}\n\treturn [{\n\t\ttype: \"entity\",\n\t\tentity: quote\n\t}];\n};\n\n})();\n",
             "type": "application/javascript",
             "title": "$:/plugins/alamantus/prettyquotes/parser.js",
             "tags": "",
