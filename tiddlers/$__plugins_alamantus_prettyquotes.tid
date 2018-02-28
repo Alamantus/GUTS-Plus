@@ -1,0 +1,47 @@
+created: 20180210001846684
+creator: Robbie Antenesse
+dependents: 
+description: Convert straight quotes to curly quotes
+modified: 20180210003658586
+modifier: Robbie Antenesse
+name: prettyquotes
+plugin-type: plugin
+revision: 0
+title: $:/plugins/alamantus/prettyquotes
+type: application/json
+version: 1.0.1
+
+{
+    "tiddlers": {
+        "$:/plugins/alamantus/prettyquotes/parser.js": {
+            "created": "20180209235256544",
+            "creator": "Robbie Antenesse",
+            "text": "/*\\\ntitle: $:/core/modules/parsers/wikiparser/rules/prettyquotes.js\ntype: application/javascript\nmodule-type: wikirule\n\nWiki text inline rule for dashes. For example:\n\n```\nThis is an left single quote: ‘\nThis is an right single quote: ’\n\nThis is an left double quote: “\nThis is an right double quote: ”\n```\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nexports.name = \"prettyquotes\";\nexports.types = {inline: true};\n\nexports.init = function(parser) {\n\tthis.parser = parser;\n\t// Regexp to match\n\tthis.matchRegExp = /(\\s\")|(\"\\s)|(\\s')|(')/mg;\n};\n\nexports.parse = function() {\n\t// Move past the match\n\tthis.parser.pos = this.matchRegExp.lastIndex;\n\t// default to &rsquo;\n\tvar quote = \"’\";\n\tif (this.match[1] !== undefined) {\n\t\tquote = \" “\";\n\t} else if (this.match[2] !== undefined) {\n\t\tquote = \"” \";\n\t} else if (this.match[3] !== undefined) {\n\t\tquote = \" ‘\";\n\t}\n\treturn [{\n\t\ttype: \"entity\",\n\t\tentity: quote\n\t}];\n};\n\n})();\n",
+            "type": "application/javascript",
+            "title": "$:/plugins/alamantus/prettyquotes/parser.js",
+            "tags": "",
+            "module-type": "wikirule",
+            "modifier": "Robbie Antenesse",
+            "modified": "20180210002104216"
+        },
+        "$:/plugins/alamantus/prettyquotes/icon": {
+            "created": "20180210002425309",
+            "creator": "Robbie Antenesse",
+            "text": "{{$:/plugins/alamantus/prettyquotes/images/icon.svg}}",
+            "title": "$:/plugins/alamantus/prettyquotes/icon",
+            "tags": "",
+            "modified": "20180210002608950",
+            "modifier": "Robbie Antenesse"
+        },
+        "$:/plugins/alamantus/prettyquotes/images/icon.svg": {
+            "created": "20180210002618203",
+            "creator": "Robbie Antenesse",
+            "text": "<svg width=\"22pt\" height=\"22pt\" version=\"1.1\" viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\">\n <path d=\"m50 98.478-41.983-24.239v-48.478l41.983-24.239 41.983 24.239v48.478z\" style=\"fill:#ff4f79;stroke-width:1.2218;stroke:#ff4f79\"/>\n <g style=\"fill:#fff\" aria-label=\"“ ”\">\n  <path d=\"m30.053 39.438c-8.8694-0.88391-16.797 8.9984-12.648 17.256 2.285 5.5877 11.787 3.468 10.703-2.7051-0.4988-2.6309-4.6035-6.4294 0.57617-7.0137 4.5873 2.5284 5.0074-8.7936 1.3691-7.5371zm15.529 0c-8.8785-0.89256-16.759 9.0005-12.625 17.25 2.2762 5.5893 11.785 3.4825 10.705-2.6914-0.26162-2.5318-4.5936-6.0333 0.11914-6.9336 5.0267 2.409 5.5279-8.7155 1.8008-7.625z\" style=\"fill:#fff;stroke-width:3.4091\"/>\n  <path d=\"m62.736 39.439c-5.3907-0.1632-6.9542 7.0875-3.1445 10.25 0.94516 4.5133-7.5293 0.93462-6.0879 4.8789-0.8898 4.0993 0.19245 6.5168 4.3516 5.2891 8.9604-0.26567 15.442-12.648 8.5508-19.221-1.0418-0.79808-2.3591-1.2217-3.6699-1.1973zm15.604 0c-5.4983-0.14351-6.8955 7.2156-3.0996 10.41 0.61172 4.3948-7.5144 0.7275-6.1074 4.7188-0.89065 4.1008 0.19382 6.5167 4.3535 5.2891 8.9479-0.27949 15.408-12.66 8.5234-19.221-1.0421-0.79842-2.3586-1.2222-3.6699-1.1973z\" style=\"fill:#fff;stroke-width:3.4091\"/>\n </g>\n</svg>\n",
+            "title": "$:/plugins/alamantus/prettyquotes/images/icon.svg",
+            "tags": "",
+            "modified": "20180210003604716",
+            "modifier": "Robbie Antenesse",
+            "type": "image/svg+xml"
+        }
+    }
+}

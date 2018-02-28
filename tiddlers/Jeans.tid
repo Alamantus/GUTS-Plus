@@ -1,0 +1,18 @@
+bonus: none
+created: 20180205195508071
+creator: Robbie Antenesse
+item-class: basic
+modified: 20180205195612615
+modifier: Robbie Antenesse
+pocket-size: 8
+revision: 0
+tags: [[Item Catalog]] Clothing Legs
+title: Jeans
+worn-on: legs
+
+A basic legs clothing item. Can be styled however a player would like.
+
+* ''Item Class:'' {{!!item-class}}
+* ''Worn On:'' {{!!worn-on}}
+* ''Pocket Size:'' {{!!pocket-size}}
+* ''Bonus:'' {{!!bonus}}

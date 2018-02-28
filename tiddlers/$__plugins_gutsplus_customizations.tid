@@ -1,0 +1,59 @@
+author: Alamantus
+core-version: 5.1.15
+created: 20180207061025841
+creator: Robbie Antenesse
+description: Style changes for publishing the GUTS+ wiki
+list: readme help
+modified: 20180207171359232
+modifier: Robbie Antenesse
+plugin-type: plugin
+revision: 0
+source: https://github.com/Alamantus
+tags: 
+title: $:/plugins/gutsplus/customizations
+type: application/json
+version: 0.0.1
+
+{
+    "tiddlers": {
+        "$:/core/ui/PageTemplate/sidebar": {
+            "title": "$:/core/ui/PageTemplate/sidebar",
+            "tags": "$:/tags/PageTemplate",
+            "text": "<$scrollable fallthrough=\"no\" class=\"tc-sidebar-scrollable\">\n\n<div class=\"tc-sidebar-header\">\n\n<$reveal state=\"$:/state/sidebar\" type=\"match\" text=\"yes\" default=\"yes\" retain=\"yes\" animate=\"yes\">\n\n<h1 class=\"tc-site-title\">\n\n<$button message=\"tm-home\" tooltip={{$:/language/Buttons/Home/Hint}} aria-label={{$:/language/Buttons/Home/Caption}}>\n\n<$transclude tiddler=\"$:/SiteTitle\" mode=\"inline\"/>\n\n</$button>\n\n</h1>\n\n<div class=\"tc-site-subtitle\">\n\n<$transclude tiddler=\"$:/SiteSubtitle\" mode=\"inline\"/>\n\n</div>\n\n{{||$:/core/ui/PageTemplate/pagecontrols}}\n\n<$transclude tiddler=\"$:/core/ui/SideBarLists\" mode=\"inline\"/>\n\n</$reveal>\n\n</div>\n\n</$scrollable>"
+        },
+        "$:/core/ui/SideBarLists": {
+            "text": "<div class=\"tc-sidebar-lists\">\n\n<$set name=\"searchTiddler\" value=\"$:/temp/search\">\n<div class=\"tc-search\">\n<$edit-text tiddler=\"$:/temp/search\" type=\"search\" placeholder=\"Search\" tag=\"input\" focus={{$:/config/Search/AutoFocus}} focusPopup=<<qualify \"$:/state/popup/search-dropdown\">> class=\"tc-popup-handle\"/>\n<$reveal state=\"$:/temp/search\" type=\"nomatch\" text=\"\">\n<$button tooltip={{$:/language/Buttons/AdvancedSearch/Hint}} aria-label={{$:/language/Buttons/AdvancedSearch/Caption}} class=\"tc-btn-invisible\">\n<$action-setfield $tiddler=\"$:/temp/advancedsearch\" text={{$:/temp/search}}/>\n<$action-setfield $tiddler=\"$:/temp/search\" text=\"\"/>\n<$action-navigate $to=\"$:/AdvancedSearch\"/>\n{{$:/core/images/advanced-search-button}}\n</$button>\n<$button class=\"tc-btn-invisible\">\n<$action-setfield $tiddler=\"$:/temp/search\" text=\"\" />\n{{$:/core/images/close-button}}\n</$button>\n<$button popup=<<qualify \"$:/state/popup/search-dropdown\">> class=\"tc-btn-invisible\">\n<$set name=\"resultCount\" value=\"\"\"<$count filter=\"[!is[system]search{$(searchTiddler)$}]\"/>\"\"\">\n{{$:/core/images/down-arrow}} {{$:/language/Search/Matches}}\n</$set>\n</$button>\n</$reveal>\n<$reveal state=\"$:/temp/search\" type=\"match\" text=\"\">\n<$button to=\"$:/AdvancedSearch\" tooltip={{$:/language/Buttons/AdvancedSearch/Hint}} aria-label={{$:/language/Buttons/AdvancedSearch/Caption}} class=\"tc-btn-invisible\">\n{{$:/core/images/advanced-search-button}}\n</$button>\n</$reveal>\n</div>\n\n<$reveal tag=\"div\" class=\"tc-block-dropdown-wrapper\" state=\"$:/temp/search\" type=\"nomatch\" text=\"\">\n\n<$reveal tag=\"div\" class=\"tc-block-dropdown tc-search-drop-down tc-popup-handle\" state=<<qualify \"$:/state/popup/search-dropdown\">> type=\"nomatch\" text=\"\" default=\"\">\n\n{{$:/core/ui/SearchResults}}\n\n</$reveal>\n\n</$reveal>\n\n</$set>\n\n<div class=tgc-sidebarlists>\n<$macrocall $name=\"tabs\" tabsList=\"[all[shadows+tiddlers]tag[$:/tags/SideBar]!has[draft.of]]\" default={{$:/config/DefaultSidebarTab}} state=\"$:/state/tab/sidebar\" />\n</div>\n</div>\n",
+            "title": "$:/core/ui/SideBarLists",
+            "modified": "20170311124941689",
+            "created": "20170311124752160"
+        },
+        "$:/language/Buttons/Home/Hint": {
+            "text": "Restart from the beginning",
+            "title": "$:/language/Buttons/Home/Hint",
+            "created": "20170322105507933",
+            "modified": "20170322110609981"
+        },
+        "$:/plugins/gutsplus/customizations/styles": {
+            "created": "20170322105952964",
+            "text": "\n\n/* Style the site title button as a regular link */\n.tc-site-title button {\n\ttext-align: left !important;\n\tbackground: none !important;\n\tborder: none !important;\n\tpadding: 0 !important;\n\t}\n",
+            "title": "$:/plugins/gutsplus/customizations/styles",
+            "tags": "$:/tags/Stylesheet",
+            "modified": "20170406121546332"
+        },
+        "$:/plugins/gutsplus/customizations/icon": {
+            "text": "{{$:/plugins/gutsplus/customizations/images/icon.svg}}",
+            "title": "$:/plugins/gutsplus/customizations/icon",
+            "tags": "",
+            "modified": "20170725163000426",
+            "created": "20170322105647495"
+        },
+        "$:/plugins/gutsplus/customizations/images/icon.svg": {
+            "text": "<svg width=\"22pt\" height=\"22pt\" viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:svg=\"http://www.w3.org/2000/svg\">\n  <g\n     id=\"g4494\">\n    <path\n       style=\"fill:#1f2bf6;fill-opacity:1;stroke:#1f29f6;stroke-width:1.22179997;stroke-miterlimit:4;stroke-opacity:1\"\n       d=\"M 49.999999,98.477964 8.0168689,74.238964 V 25.761004 L 49.999999,1.5220337 91.983129,25.761004 v 48.47796 z\"\n       id=\"path4142\"\n       stroke-miterlimit=\"4\" />\n    <path\n       id=\"rect4527\"\n       d=\"M 47.57511,35.807399 V 47.573247 H 35.805248 v 4.853507 H 47.57511 v 11.765845 h 4.849777 V 52.426754 H 64.194749 V 47.573247 H 52.424887 V 35.807399 Z\"\n       style=\"opacity:0.98999999;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:6.81818167;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1\" />\n  </g>\n</svg>",
+            "type": "image/svg+xml",
+            "title": "$:/plugins/gutsplus/customizations/images/icon.svg",
+            "tags": "",
+            "modified": "20170725163000426",
+            "created": "20170322105647495"
+        }
+    }
+}

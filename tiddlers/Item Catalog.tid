@@ -1,0 +1,22 @@
+color: #0000ff
+created: 20180205190936816
+creator: Robbie Antenesse
+modified: 20180228182507056
+modifier: Robbie Antenesse
+tags: Book [[Item Catalog]]
+title: Item Catalog
+type: text/vnd.tiddlywiki
+
+This book contains references to possible item types and abilities. The GM or game world may specify any combinations or specificities of any given item a player might receive during the game, but the core possibilities should help you understand what an item might be capable of.
+
+!! Clothing
+* [[Torso|Clothing - Torso]]
+* [[Legs|Clothing - Legs]]
+* [[Feet|Clothing - Feet]]
+
+!! Accessories
+* [[Head|Accessories - Head]]
+* [[Neck|Accessories - Neck]]
+* [[Arms|Accessories - Arms]]
+* [[Hands|Accessories - Hands]]
+* [[Back|Accessories - Back]]

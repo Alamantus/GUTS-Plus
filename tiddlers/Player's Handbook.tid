@@ -1,0 +1,22 @@
+color: #008000
+created: 20180205183104963
+creator: Robbie Antenesse
+list: 
+modified: 20180209230326708
+modifier: Robbie Antenesse
+revision: 0
+tags: Book
+title: Player's Handbook
+
+This guide will walk you through the process of creating your character and navigating the game world. The rest is pretty much up to your [[Game Master]] and you simply need to play within the world that your character has been placed into.
+
+[ext[Character Sheet|./files/GUTS+_Character-Sheet.pdf]]
+
+!! Character Creation
+{{Character Creation}}
+
+!! Playing the Game
+{{Playing the Game}}
+
+!! Getting Stronger
+Rather than using level numbers to determine what can be done by a character, skills are determined exclusively by the number of stat points assigned to the character's stats.

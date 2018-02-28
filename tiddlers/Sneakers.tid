@@ -1,0 +1,16 @@
+bonus: none
+created: 20180205195733264
+creator: Robbie Antenesse
+item-class: basic
+modified: 20180205195904584
+modifier: Robbie Antenesse
+revision: 0
+tags: [[Item Catalog]] Clothing Feet
+title: Sneakers
+worn-on: feet
+
+A basic feet clothing item. Can be styled however a player would like. Allows character to comfortably walk on hard or uneven ground.
+
+* ''Item Class:'' {{!!item-class}}
+* ''Worn On:'' {{!!worn-on}}
+* ''Bonus:'' {{!!bonus}}

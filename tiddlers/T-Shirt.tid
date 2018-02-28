@@ -1,0 +1,16 @@
+bonus: none
+created: 20180205194734000
+creator: Robbie Antenesse
+item-class: basic
+modified: 20180205195628623
+modifier: Robbie Antenesse
+revision: 0
+tags: [[Item Catalog]] Clothing Torso
+title: T-Shirt
+worn-on: torso
+
+A basic torso clothing item. Can be styled however a player would like.
+
+* ''Item Class:'' {{!!item-class}}
+* ''Worn On:'' {{!!worn-on}}
+* ''Bonus:'' {{!!bonus}}
