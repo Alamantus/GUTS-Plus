@@ -11,7 +11,10 @@
     "load": "tiddlywiki . --load ./output/GUTS+_tiddlywiki.html",
     "build": "npm run build:single && npm run build:public",
     "build:single": "tiddlywiki . --build tiddly",
-    "build:public": "tiddlywiki . --build public"
+    "build:public": "tiddlywiki . --build public && npm run copy-files",
+    "copy-files": "npm run copy-images && npm run copy-documents",
+    "copy-images": "xcopy public_files\\images\\* output\\public\\images\\",
+    "copy-documents": "xcopy public_files\\documents\\* output\\public\\files\\"
   },
   "repository": {
     "type": "git",
