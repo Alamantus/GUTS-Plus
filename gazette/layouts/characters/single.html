@@ -1,0 +1,50 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+<h2>Character: {{ .Title }}</h2>
+
+<div class="row main-row">
+  <div class="8u 12u(mobile)">
+
+    <section class="left-content">
+
+      <h3>Current Stats</h3>
+      <p>
+      {{ $stats := where (where (where .Site.Pages "Section" "stats") ".Params.campaign" .Params.campaign) ".Params.character" .Params.name }}
+      {{ if le (len $stats) 0 }}
+        None yet
+      {{ else }}
+        {{ $currentStats := index $stats 0 }}
+        {{ range $stat, $value := $currentStats.Params.stats }}
+        <span><strong>{{ title $stat }}:</strong> {{ $value }}</span>
+        {{ end }}
+      {{ end }}
+      </p>
+
+      <h3>Background</h3>
+      {{ .Content }}
+
+    </section>
+
+  </div>
+  <div class="4u 12u(mobile)">
+
+    <section>
+      <h2>Current Equipment</h2>
+      <p>
+      {{ $equipment := where (where (where .Site.Pages "Section" "equipment") ".Params.campaign" .Params.campaign) ".Params.character" .Params.name }}
+      {{ if le (len $equipment) 0 }}
+      None yet
+      {{ else }}
+        {{ $currentEquipment := index $equipment 0 }}
+        <h3>Clothing</h3>
+        <strong>Torso:</strong> {{ $currentEquipment.Params.clothing.torso }}<br />
+      {{ end }}
+      </p>
+    </section>
+
+  </div>
+</div>
+
+{{ partial "footer.html" . }}
+{{ partial "foot.html" . }}

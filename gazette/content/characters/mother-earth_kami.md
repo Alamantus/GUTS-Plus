@@ -5,13 +5,13 @@ type: characters
 campaign: "mother-earth"
 draft: false
 ---
-### Appearance
+#### Appearance
 
 Female, 18 years old, east Asian. Has chin-length, straight, black hair, narrow, dark eyes,
 a small, pointed nose, and full lips on an round, somewhat flat face with a pointed chin.
 She is about 5′ 4″ and weighs 120 lbs. She walks confidently and gracefully.
 
-### Background
+#### Background
 
 Kami is the daughter of wealthy businesswomen who are co-owners and CEOs of the megacorporation
 that has been behind the growth of Startere. Though she has not always had the full attention
@@ -20,7 +20,7 @@ her into running and climbing, which gradually led her to parkour. While there�
 and climb on in Startere, she’s made do with what is around. She is frequently complained about
 and reported to the police, but her quick wit and sharp tongue always gets her out of trouble.
 
-### Personality
+#### Personality
 
 Kami is quiet, but very sharp. She can talk her way out of most situations, and she can escape
 the ones she can’t. She spends a lot of her time stretching and practicing flips and rolls so

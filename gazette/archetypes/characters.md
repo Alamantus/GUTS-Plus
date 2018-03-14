@@ -5,14 +5,14 @@ type: characters
 campaign: "{{ $campaign | urlize }}"
 draft: true
 ---
-### Appearance
+#### Appearance
 
 Character appearance
 
-### Background
+#### Background
 
 Character background
 
-### Personality
+#### Personality
 
 Character personality
