@@ -1,0 +1,18 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+<div class="row main-row">
+  <div class="12u">
+
+    <section>
+      <h2>{{ .Title }}</h2>
+      <p class="date">{{ .Date.Format  "Wednesday, March 12, 2018" }}</p>
+
+      {{ .Content }}
+    </section>
+
+  </div>
+</div>
+
+{{ partial "footer.html" . }}
+{{ partial "foot.html" . }}

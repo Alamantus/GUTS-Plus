@@ -1,0 +1,31 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+<div class="row main-row">
+  <div class="12u">
+
+    <section>
+      <h2>{{ .Title }}</h2>
+      
+      <ul class="big-image-list">
+      {{ range .Data.Pages }}
+        <li>
+          {{ if (isset .Params "image") }}
+          <a href="{{ .RelPermalink }}">
+            <img src="{{ .Params.image.src }}" alt="{{ .Params.image.alt }}" class="left" />
+          </a>
+          {{ end }}
+          <span class="date">Started {{ .Date.Format "January 2, 2006" }}</span>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ $sessions := where (where .Site.Pages "Section" "sessions") ".Params.campaign" .Params.name}}
+          <p>Total Sessions: {{ len $sessions }}</p>
+        </li>
+      {{ end }}
+      </ul>
+    </section>
+
+  </div>
+</div>
+
+{{ partial "footer.html" . }}
+{{ partial "foot.html" . }}

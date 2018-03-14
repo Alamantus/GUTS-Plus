@@ -1,0 +1,37 @@
+baseURL: http://example.org/
+languageCode: en-us
+title: The GUTS+ Gazette
+theme: ""
+
+params:
+  Description: All the information about, updates for, and campaign examples of the GUTS+ RPG System
+  NavLinks:
+  - title: Home
+    url: /
+  - title: Campaigns
+    url: /campaigns
+  - title: GUTS+ Rules
+    url: https://alamantus.gitlab.io/GUTS-Plus
+  Homepage:
+    Section1:
+      header: What is the GUTS+ System?
+      text: |
+        The GUTS+ System is a role-playing game system in the spirit of Dungeons & Dragons and Pathfinder,
+        but simplified to focus more on collaborative storytelling and free-form play.
+
+        Rather than having set skills, GUTS+ focuses on individual stats giving your character the ability
+        to do things, and if they don't have a specific stat, their success at performing tasks is dependent
+        upon their base stats: **G**umption, **U**tility, **T**hought, and **S**lyness
+      callToAction: Read the rules for free!
+      ctaURL: https://alamantus.gitlab.io/GUTS-Plus
+    Section2:
+      header: What's this website for?
+      text: |
+        The GUTS+ Gazette mainly exists as an excuse to post example campaigns using the GUTS+ System. Because
+        the GUTS+ System is still in development, it also contains news and development notes about the process
+        for anyone who might be interested.
+
+        The campaign examples will be posted as serial stories with links to the characters' sheets and
+        inventories in every post, so be sure to check back to see what happens!
+      callToAction: Check out the campaigns!
+      ctaURL: /campaigns

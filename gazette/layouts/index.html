@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+{{ `<!--
+  Minimaxing by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->` | safeHTML }}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ .Title }}</title>
+    <description>{{ .Site.Params.Description }}</description>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {{ `<!--[if lte IE 8]><script src="{{ .Site.BaseURL }}/assets/js/ie/html5shiv.js"></script><![endif]-->` | safeHTML }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/assets/css/main.css" />
+    {{ `<!--[if lte IE 9]><link rel="stylesheet" href="{{ .Site.BaseURL }}/assets/css/ie9.css" /><![endif]-->` | safeHTML }}
+  </head>
+  <body>
+    <div id="page-wrapper">
+
+      {{ partial "header.html" . }}
+
+      <div id="banner-wrapper">
+        <div class="container">
+
+          <div id="banner">
+            <h2>Welcome to {{ .Title }}</h2>
+            <span>{{ .Site.Params.Description }}</span>
+          </div>
+
+        </div>
+      </div>
+      <div id="main">
+        <div class="container">
+          <div class="row main-row">
+            <div class="6u 12u(mobile)">
+
+              <section>
+                {{ $section := .Site.Params.Homepage.Section1 }}
+                <h2>{{ $section.header }}</h2>
+                {{ markdownify $section.text }}
+                {{ if (isset $section "calltoaction") }}
+                <footer class="controls">
+                  <a href="{{ $section.ctaURL }}" class="button">{{ $section.callToAction }}</a>
+                </footer>
+                {{ end }}
+              </section>
+
+            </div>
+
+            <div class="6u 12u(mobile)">
+
+              <section>
+                {{ $section := .Site.Params.Homepage.Section2 }}
+                <h2>{{ $section.header }}</h2>
+                {{ markdownify $section.text }}
+                {{ if (isset $section "calltoaction") }}
+                <footer class="controls">
+                  <a href="{{ $section.ctaURL }}" class="button">{{ $section.callToAction }}</a>
+                </footer>
+                {{ end }}
+              </section>
+
+            </div>
+          </div>
+
+          <div class="row main-row">
+            <div class="6u 12u(mobile)">
+
+              <section>
+                <h2>Recent News</h2>
+                <p>Updates and development process posts</p>
+                <ul class="big-image-list">
+                {{ range first 5 (where .Data.Pages "Section" "posts") }}
+                  <li>
+                    {{ if (isset .Params "image") }}
+                    <a href="{{ .RelPermalink }}">
+                      <img src="{{ .Params.image.src }}" alt="{{ .Params.image.alt }}" class="left" />
+                    </a>
+                    {{ end }}
+                    <span class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</span>
+                    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                    {{ truncate 300 "..." .Content }}
+                  </li>
+                {{ end }}
+                </ul>
+                {{ if (gt (len .Data.Pages) 5)}}
+                <footer class="controls">
+                  <a href="/posts" class="button">See More</a>
+                </footer>
+                {{ end }}
+              </section>
+
+            </div>
+            <div class="6u 12u(mobile)">
+
+              <article class="campaign">
+              {{ range first 1 (where .Data.Pages "Section" "campaigns") }}
+                <h2>Most Recent Campaign</h2>
+                <!-- <a class="characters" href="#">View Characters</a> -->
+                {{ if (isset .Params "image") }}
+                  <a href="{{ .RelPermalink }}">
+                    <img src="{{ .Params.Image.src }}" alt="{{ .Params.Image.alt }}" class="top campaign-image" />
+                  </a>
+                {{ end }}
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                {{ truncate 300 .Content }}
+                <footer class="controls">
+                  <a href="{{ .RelPermalink }}" class="button">Continue Reading</a>
+                </footer>
+              {{ end }}
+              </article>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
