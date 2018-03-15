@@ -7,8 +7,8 @@
     <section>
       <h2>{{ .Title }}</h2>
       
-      {{ range .Data.Pages.GroupBy ".Params.campaign" }}
-        {{ $campaign := index (where (where .Site.Pages "Section" "campaigns") ".Params.name" .Key) 0 }}
+      {{ range .Data.Pages.GroupByParam "campaign" }}
+        {{ $campaign := index (where (where $.Site.Pages "Section" "campaigns") ".Params.name" .Key) 0 }}
         <h3>{{ $campaign.Title }}</h3>
         <ul class="big-image-list">
           {{ range .Pages }}
