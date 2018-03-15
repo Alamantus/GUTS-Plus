@@ -1,0 +1,32 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+<div class="row main-row">
+  <div class="12u">
+
+    <section>
+      <h2>{{ .Title }}</h2>
+      
+      {{ range .Data.Pages.GroupByParam "campaign" }}
+        {{ $campaign := index (where (where $.Site.Pages "Section" "campaigns") ".Params.name" .Key) 0 }}
+        <h3>{{ $campaign.Title }}</h3>
+        <ul class="big-image-list">
+          {{ range .Pages }}
+          <li>
+            {{ if (isset .Params "image") }}
+            <a href="{{ .RelPermalink }}">
+              <img src="{{ .Params.image.src }}" alt="{{ .Params.image.alt }}" class="left" />
+            </a>
+            {{ end }}
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    </section>
+
+  </div>
+</div>
+
+{{ partial "footer.html" . }}
+{{ partial "foot.html" . }}
