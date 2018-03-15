@@ -17,10 +17,5 @@ accessories:
   back: null
   waist: null
   legs: null
-inventory:
-  hands:
-  - null
-  bag:
-  - null
 ---
 

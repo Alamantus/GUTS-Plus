@@ -7,10 +7,15 @@ campaign: "mother-earth"
 session: 0
 instant: 0
 stats:
-  gumption: 2
-  utility: 3
-  thought: 1
-  slyness: 3
-  parkour: 1
+- name: gumption
+  value: 2
+- name: utility
+  value: 3
+- name: thought
+  value: 1
+- name: slyness
+  value: 3
+- name: parkour
+  value: 1
 ---
 

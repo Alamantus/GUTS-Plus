@@ -8,18 +8,65 @@
 
     <section class="left-content">
 
+      {{ $campaign := index (where (where .Site.Pages "Section" "campaigns") ".Params.name" .Params.campaign) 0}}
+      <strong>Campaign: <a href="{{ $campaign.RelPermalink }}">{{ $campaign.Title }}</a></strong> 
+
+    </section>
+
+    <section class="left-content">
+
       <h3>Current Stats</h3>
-      <p>
       {{ $stats := where (where (where .Site.Pages "Section" "stats") ".Params.campaign" .Params.campaign) ".Params.character" .Params.name }}
       {{ if le (len $stats) 0 }}
-        None yet
+      <p>None yet</p>
       {{ else }}
         {{ $currentStats := index $stats 0 }}
-        {{ range $stat, $value := $currentStats.Params.stats }}
-        <span><strong>{{ title $stat }}:</strong> {{ $value }}</span>
+        <div class="row">
+        {{ range $currentStats.Params.stats }}
+          <div class="2u 4u(mobile)">
+            <p><strong>{{ title .name }}:</strong> {{ .value }}</p>
+          </div>
         {{ end }}
+        </div>
       {{ end }}
-      </p>
+
+    </section>
+
+    <section class="left-content">
+
+      <h3>Current Injuries</h3>
+      {{ $injuries := where (where (where .Site.Pages "Section" "injuries") ".Params.campaign" .Params.campaign) ".Params.character" .Params.name }}
+      {{ if le (len $injuries) 0 }}
+      <p>None yet</p>
+      {{ else }}
+        {{ $currentInjuries := index $injuries 0 }}
+        <div class="row">
+        {{ range $injury := $currentInjuries.Params.injuries }}
+          <div class="3u 6u(mobile)">
+            <h4>{{ title .name }}</h4>
+            <strong>Minor:</strong>
+            {{ range $number := (seq .maxMinor)}}
+            {{ if ge $injury.minor $number }}&#x2612;{{ else }}&#x2610;{{ end }}
+            {{ end }}<br />
+            <strong>Major:</strong>
+            {{ range $number := (seq .maxMajor)}}
+            {{ if ge $injury.major $number }}&#x2612;{{ else }}&#x2610;{{ end }}
+            {{ end }}
+          </div>
+        {{ end }}
+          <div class="3u 6u(mobile)">
+            <h4>Strain</h4>
+            {{ range $number := (seq $currentInjuries.Params.maxstrain)}}
+            {{ if ge $currentInjuries.Params.strain $number }}&#x2612;{{ else }}&#x2610;{{ end }}
+            {{ if eq $number 5 }}<br />{{ end }}
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+
+    </section>
+
+    <section class="left-content">
 
       <h3>Background</h3>
       {{ .Content }}
@@ -30,17 +77,63 @@
   <div class="4u 12u(mobile)">
 
     <section>
+      <h2>Current Inventory</h2>
+      
+      {{ $inventories := where (where (where .Site.Pages "Section" "inventories") ".Params.campaign" .Params.campaign) ".Params.character" .Params.name }}
+      {{ if le (len $inventories) 0 }}
+      <p>None yet</p>
+      {{ else }}
+        {{ $currentInventory := index $inventories 0 }}
+        <h3>Hands & Pockets</h3>
+        {{ if and (le (len $currentInventory.Params.inventory.bag) 1) (eq (index $currentInventory.Params.inventory.bag 0) nil)}}
+        <p>Empty</p>
+        {{ else }}
+        <ul>
+          {{ range $currentInventory.Params.inventory.hands }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+        {{ end }}
+        
+        <h3>Bag</h3>
+        {{ if not (isset $currentInventory.Params.inventory "bag") }}
+        <p>None</p>
+        {{ else if and (le (len $currentInventory.Params.inventory.bag) 1) (eq (index $currentInventory.Params.inventory.bag 0) nil)}}
+        <p>Empty</p>
+        {{ else }}
+        <ul>
+          {{ range $currentInventory.Params.inventory.bag }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      {{ end }}
+    </section>
+
+    <section>
       <h2>Current Equipment</h2>
-      <p>
+      
       {{ $equipment := where (where (where .Site.Pages "Section" "equipment") ".Params.campaign" .Params.campaign) ".Params.character" .Params.name }}
       {{ if le (len $equipment) 0 }}
-      None yet
+      <p>None yet</p>
       {{ else }}
         {{ $currentEquipment := index $equipment 0 }}
         <h3>Clothing</h3>
-        <strong>Torso:</strong> {{ $currentEquipment.Params.clothing.torso }}<br />
+        <p>
+          <strong>Torso:</strong> {{ $currentEquipment.Params.clothing.torso }}<br />
+          <strong>Legs:</strong> {{ $currentEquipment.Params.clothing.legs }}<br />
+          <strong>Feet:</strong> {{ $currentEquipment.Params.clothing.feet }}
+        </p>
+        <h3>Accessories</h3>
+        <p>
+          <strong>Head:</strong> {{ $currentEquipment.Params.accessories.head }}<br />
+          <strong>Neck:</strong> {{ $currentEquipment.Params.accessories.neck }}<br />
+          <strong>Arms:</strong> {{ $currentEquipment.Params.accessories.arms }}<br />
+          <strong>Back:</strong> {{ $currentEquipment.Params.accessories.back }}<br />
+          <strong>Waist:</strong> {{ $currentEquipment.Params.accessories.waist }}<br />
+          <strong>Legs:</strong> {{ $currentEquipment.Params.accessories.legs }}
+        </p>
       {{ end }}
-      </p>
     </section>
 
   </div>
