@@ -1,31 +1,33 @@
 {{ partial "head.html" . }}
 {{ partial "header.html" . }}
 
-<div class="row main-row">
-  <div class="12u">
+<section class="section"><div class="container">
 
-    <section>
-      <h2>{{ .Title }}</h2>
-      
-      <ul class="big-image-list">
-      {{ range .Data.Pages }}
-        <li>
-          {{ if (isset .Params "image") }}
+  <h2 class="title is-2">{{ .Title }}</h2>
+  
+  {{ range .Data.Pages }}
+  <div class="box">
+    <div class="columns">
+      {{ if (isset .Params "image") }}
+      <div class="column is-4">
+        <figure class="image is-16by9">
           <a href="{{ .RelPermalink }}">
-            <img src="{{ .Params.image.src }}" alt="{{ .Params.image.alt }}" class="left" />
+            <img src="{{ .Params.image.src }}" alt="{{ .Params.image.alt }}" />
           </a>
-          {{ end }}
-          <span class="date">Started {{ .Date.Format "January 2, 2006" }}</span>
-          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          {{ $sessions := where (where .Site.Pages "Section" "sessions") ".Params.campaign" .Params.name}}
-          <p>Total Sessions: {{ len $sessions }}</p>
-        </li>
+        </figure>
+      </div>
       {{ end }}
-      </ul>
-    </section>
-
+      <div class="column">
+        <span class="is-pulled-right">Started {{ .Date.Format "January 2, 2006" }}</span>
+        <h3 class="title is-3"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        {{ $sessions := where (where .Site.Pages "Section" "sessions") ".Params.campaign" .Params.name}}
+        <p>Total Sessions: {{ len $sessions }}</p>
+      </div>
+    </div>
   </div>
-</div>
+  {{ end }}
+
+</div></section>
 
 {{ partial "footer.html" . }}
 {{ partial "foot.html" . }}

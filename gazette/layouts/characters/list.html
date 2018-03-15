@@ -1,32 +1,38 @@
 {{ partial "head.html" . }}
 {{ partial "header.html" . }}
 
-<div class="row main-row">
-  <div class="12u">
+<section class="section"><div class="container">
 
-    <section>
-      <h2>{{ .Title }}</h2>
-      
-      {{ range .Data.Pages.GroupByParam "campaign" }}
-        {{ $campaign := index (where (where $.Site.Pages "Section" "campaigns") ".Params.name" .Key) 0 }}
-        <h3>{{ $campaign.Title }}</h3>
-        <ul class="big-image-list">
-          {{ range .Pages }}
-          <li>
-            {{ if (isset .Params "image") }}
-            <a href="{{ .RelPermalink }}">
-              <img src="{{ .Params.image.src }}" alt="{{ .Params.image.alt }}" class="left" />
-            </a>
-            {{ end }}
-            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          </li>
-          {{ end }}
-        </ul>
+  <h2 class="title is-2">{{ .Title }}</h2>
+  
+  {{ range .Data.Pages.GroupByParam "campaign" }}
+  <div class="box">
+    {{ $campaign := index (where (where $.Site.Pages "Section" "campaigns") ".Params.name" .Key) 0 }}
+    <h3 class="title is-3">{{ $campaign.Title }}</h3>
+    {{ $numberOfCharacters := len .Pages }}
+    {{ range $index, $character := .Pages }}
+    <div class="columns">
+      {{ if (isset $character.Params "image") }}
+      <div class="column is-2">
+        <figure class="image is-square">
+          <a href="{{ $character.RelPermalink }}">
+            <img src="{{ $character.Params.image.src }}" alt="{{ $character.Params.image.alt }}" class="left" />
+          </a>
+        </figure>
+      </div>
       {{ end }}
-    </section>
-
+      <div class="column">
+        <h4 class="title is-4"><a href="{{ $character.RelPermalink }}">{{ $character.Title }}</a></h4>
+      </div>
+    </div>
+    {{ if and (lt $index $numberOfCharacters) (not (eq $index (sub $numberOfCharacters 1)))}}
+    <hr />
+    {{ end }}
+    {{ end }}
   </div>
-</div>
+  {{ end }}
+
+</div></section>
 
 {{ partial "footer.html" . }}
 {{ partial "foot.html" . }}

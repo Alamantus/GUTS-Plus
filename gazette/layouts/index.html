@@ -1,120 +1,119 @@
-<!DOCTYPE HTML>
-{{ `<!--
-  Minimaxing by HTML5 UP
-  html5up.net | @ajlkn
-  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->` | safeHTML }}
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>{{ .Title }}</title>
-    <description>{{ .Site.Params.Description }}</description>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
 
-    {{ `<!--[if lte IE 8]><script src="{{ .Site.BaseURL }}/assets/js/ie/html5shiv.js"></script><![endif]-->` | safeHTML }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}/assets/css/main.css" />
-    {{ `<!--[if lte IE 9]><link rel="stylesheet" href="{{ .Site.BaseURL }}/assets/css/ie9.css" /><![endif]-->` | safeHTML }}
-  </head>
-  <body>
-    <div id="page-wrapper">
+{{ partial "header.html" . }}
 
-      {{ partial "header.html" . }}
-
-      <div id="banner-wrapper">
-        <div class="container">
-
-          <div id="banner">
-            <h2>Welcome to {{ .Title }}</h2>
-            <span>{{ .Site.Params.Description }}</span>
-          </div>
-
-        </div>
-      </div>
-      <div id="main">
-        <div class="container">
-          <div class="row main-row">
-            <div class="6u 12u(mobile)">
-
-              <section>
-                {{ $section := .Site.Params.Homepage.Section1 }}
-                <h2>{{ $section.header }}</h2>
-                {{ markdownify $section.text }}
-                {{ if (isset $section "calltoaction") }}
-                <footer class="controls">
-                  <a href="{{ $section.ctaURL }}" class="button">{{ $section.callToAction }}</a>
-                </footer>
-                {{ end }}
-              </section>
-
-            </div>
-
-            <div class="6u 12u(mobile)">
-
-              <section>
-                {{ $section := .Site.Params.Homepage.Section2 }}
-                <h2>{{ $section.header }}</h2>
-                {{ markdownify $section.text }}
-                {{ if (isset $section "calltoaction") }}
-                <footer class="controls">
-                  <a href="{{ $section.ctaURL }}" class="button">{{ $section.callToAction }}</a>
-                </footer>
-                {{ end }}
-              </section>
-
-            </div>
-          </div>
-
-          <div class="row main-row">
-            <div class="6u 12u(mobile)">
-
-              <section>
-                <h2>Recent News</h2>
-                <p>Updates and development process posts</p>
-                <ul class="big-image-list">
-                {{ range first 5 (where .Data.Pages "Section" "posts") }}
-                  <li>
-                    {{ if (isset .Params "image") }}
-                    <a href="{{ .RelPermalink }}">
-                      <img src="{{ .Params.image.src }}" alt="{{ .Params.image.alt }}" class="left" />
-                    </a>
-                    {{ end }}
-                    <span class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</span>
-                    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-                    {{ truncate 300 "..." .Content }}
-                  </li>
-                {{ end }}
-                </ul>
-                {{ if (gt (len .Data.Pages) 5)}}
-                <footer class="controls">
-                  <a href="/posts" class="button">See More</a>
-                </footer>
-                {{ end }}
-              </section>
-
-            </div>
-            <div class="6u 12u(mobile)">
-
-              <article class="campaign">
-              {{ range first 1 (where .Data.Pages "Section" "campaigns") }}
-                <h2>Most Recent Campaign</h2>
-                <!-- <a class="characters" href="#">View Characters</a> -->
-                {{ if (isset .Params "image") }}
-                  <a href="{{ .RelPermalink }}">
-                    <img src="{{ .Params.Image.src }}" alt="{{ .Params.Image.alt }}" class="top campaign-image" />
-                  </a>
-                {{ end }}
-                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-                {{ truncate 300 .Content }}
-                <footer class="controls">
-                  <a href="{{ .RelPermalink }}" class="button">Continue Reading</a>
-                </footer>
-              {{ end }}
-              </article>
-
-            </div>
-          </div>
-        </div>
-      </div>
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        Welcome to {{ .Title }}
+      </h1>
+      <h2 class="subtitle">
+        {{ .Site.Params.Description }}
+      </h2>
     </div>
-  </body>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="columns">
+
+      <div class="column is-half">
+        <div class="box">
+          {{ $section := .Site.Params.Homepage.Section1 }}
+          <h2 class="title is-2">{{ $section.header }}</h2>
+          <div class="content">
+            {{ markdownify $section.text }}
+          </div>
+          {{ if (isset $section "calltoaction") }}
+          <a href="{{ $section.ctaURL }}" class="button">{{ $section.callToAction }}</a>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="column is-half">
+        <div class="box">
+          {{ $section := .Site.Params.Homepage.Section2 }}
+          <h2 class="title is-2">{{ $section.header }}</h2>
+          <div class="content">
+            {{ markdownify $section.text }}
+          </div>
+          {{ if (isset $section "calltoaction") }}
+          <a href="{{ $section.ctaURL }}" class="button">{{ $section.callToAction }}</a>
+          {{ end }}
+        </div>
+      </div>
+
+    </div>
+
+    <div class="columns">
+
+      <div class="column is-half">
+        <div class="box">
+          <h2 class="title is-2">Recent News</h2>
+          <p>Updates and development process posts</p>
+          {{ range first 5 (where .Data.Pages "Section" "posts") }}
+          <div class="columns">
+            {{ if (isset .Params "image") }}
+            <div class="column is-2">
+              <figure class="image is-square">
+                <a href="{{ .RelPermalink }}">
+                  <img src="{{ .Params.image.src }}" alt="{{ .Params.image.alt }}" />
+                </a>
+              </figure>
+            </div>
+            {{ end }}
+            <div class="column">
+              <span class="is-pulled-right">{{ .Date.Format "Mon, Jan 2, 2006" }}</span>
+              <h3 class="title is-3"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              <div class="content">
+                {{ truncate 300 "..." .Content }}
+              </div>
+            </div>
+          </div>
+          {{ end }}
+          {{ if (gt (len .Data.Pages) 5)}}
+          <a href="/posts" class="button">See More</a>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="column is-half">
+        <div class="box">
+          <h2 class="title is-2">Most Recent Campaign</h2>
+          {{ $lastCampaign := index (sort (where .Data.Pages "Section" "campaigns") "Date" "desc") 0 }}
+          {{ if (isset $lastCampaign.Params "image") }}
+          <figure class="image is-16by9">
+            <a href="{{ $lastCampaign.RelPermalink }}">
+              <img src="{{ $lastCampaign.Params.Image.src }}" alt="{{ $lastCampaign.Params.Image.alt }}" />
+            </a>
+          </figure>
+          {{ end }}
+          <h3 class="title is-3"><a href="{{ $lastCampaign.RelPermalink }}">{{ $lastCampaign.Title }}</a></h3>
+          <div class="content">
+            {{ truncate 300 $lastCampaign.Content }}
+          </div>
+          <a href="{{ $lastCampaign.RelPermalink }}" class="button">Continue Reading</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{{ partial "footer.html" . }}
+
+</body>
 </html>

@@ -1,18 +1,15 @@
 {{ partial "head.html" . }}
 {{ partial "header.html" . }}
 
-<div class="row main-row">
-  <div class="12u">
+<section class="section"><div class="container">
 
-    <section>
-      <h2>{{ .Title }}</h2>
-      <p class="date">{{ .Date.Format  "Wednesday, March 12, 2018" }}</p>
-
-      {{ .Content }}
-    </section>
-
+  <h2 class="title is-2">{{ .Title }}</h2>
+  <p>{{ .Date.Format  "Monday, January 2, 2006" }}</p>
+  <div class="content">
+    {{ .Content }}
   </div>
-</div>
+
+</div></section>
 
 {{ partial "footer.html" . }}
 {{ partial "foot.html" . }}

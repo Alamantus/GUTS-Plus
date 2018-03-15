@@ -1,49 +1,53 @@
 {{ partial "head.html" . }}
 {{ partial "header.html" . }}
 
-<h2>{{ .Title }}</h2>
+<section class="section"><div class="container">
 
-<div class="row main-row">
-  <div class="8u 12u(mobile)">
+  <h2 class="title is-2">{{ .Title }}</h2>
 
-    <section class="left-content">
-      <p>{{ .Date.Format  "Wednesday, March 12, 2018" }}</p>
+  <div class="columns">
+    <div class="column is-three-quarters">
+      <span>{{ .Date.Format  "Monday, January 2, 2006" }}</span>
 
-      {{ .Content }}
-    </section>
+      <div class="content">
+        {{ .Content }}
+      </div>
 
-  </div>
-  <div class="4u 12u(mobile)">
+    </div>
 
-    <section>
+    <div class="column is-one-quarter">
+
       {{ $campaign := index (where (where .Site.Pages "Section" "campaigns") ".Params.name" .Params.campaign) 0}}
-      <h2>Campaign</h2>
+      <h3 class="title is-3">Campaign</h3>
       <p><a href="{{ $campaign.RelPermalink }}">{{ $campaign.Title }}</a></p>
-    </section>
 
-    <section>
-      <h2>Characters</h2>
+      <h3 class="title is-3">Characters</h3>
       {{ $characters := where (where .Site.Pages "Section" "characters") ".Params.campaign" .Params.name }}
       {{ if le (len $characters) 0 }}
       <p>None yet</p>
       {{ else }}
-      <ul class="small-image-list">
       {{ range $characters }}
-        <li>
-          {{ if (isset .Params "image") }}
-          <a href="{{ .RelPermalink }}">
-            <img src="{{ .Params.image.src }}" alt="{{ .Params.image.alt }}" class="left" />
-          </a>
-          {{ end }}
-          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        </li>
+      <div class="columns">
+        {{ if (isset .Params "image") }}
+        <div class="column is-2">
+          <figure class="image is-square">
+            <a href="{{ .RelPermalink }}">
+              <img src="{{ .Params.image.src }}" alt="{{ .Params.image.alt }}" class="left" />
+            </a>
+          </figure>
+        </div>
+        {{ end }}
+        <div class="column">
+          <h4 class="title is-4"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+        </div>
+      </div>
       {{ end }}
-      </ul>
       {{ end }}
-    </section>
 
+    </div>
   </div>
-</div>
+
+</div></section>
 
 {{ partial "footer.html" . }}
 {{ partial "foot.html" . }}
