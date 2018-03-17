@@ -9,6 +9,4 @@ weight: 0
 type: rules
 draft: true
 ---
-{{ if eq (len $nameSplit) 1 }}# Introduction
-
-Introduction of the book.{{ end }}
+{{ if eq (len $nameSplit) 1 }}Introduction of the book.{{ end }}

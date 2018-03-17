@@ -18,3 +18,20 @@
     </div>
   </div>
 </nav>
+
+{{ if $.Scratch.Get "headerTitle" }}
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        {{ $.Scratch.Get "headerTitle" }}
+      </h1>
+      {{ if $.Scratch.Get "headerSubtitle" }}
+      <h2 class="subtitle">
+        {{ $.Scratch.Get "headerSubtitle" }}
+      </h2>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

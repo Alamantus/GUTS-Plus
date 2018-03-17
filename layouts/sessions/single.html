@@ -1,28 +1,48 @@
 {{ partial "head.html" . }}
+
+{{ $campaign := index (where (where .Site.Pages "Section" "campaigns") ".Params.name" .Params.campaign) 0}}
+{{ $.Scratch.Set "headerTitle" (printf "%s: %s" $campaign.Title .Title) }}
+{{ $.Scratch.Set "headerSubtitle" (.Date.Format  "Monday, January 2, 2006") }}
 {{ partial "header.html" . }}
 
 <section class="section"><div class="container">
 
-  <h2 class="title is-2">{{ .Title }}</h2>
-
   <div class="columns">
     <div class="column is-three-quarters">
-      <span>{{ .Date.Format  "Monday, January 2, 2006" }}</span>
 
       <div class="content">
         {{ .Content }}
+      </div>
+
+      <div class="level">
+        <div class="level-left">
+          {{ if and .Prev (eq .Prev.Params.campaign .Params.campaign) }}
+          <div class="level-item">
+            Prev:&nbsp;<a href="{{ .Prev.RelPermalink }}">{{ .Prev.Title }}</a>
+          </div>
+          {{ end }}
+        </div>
+        <div class="level-right">
+          {{ if and .Next (eq .Next.Params.campaign .Params.campaign) }}
+          <div class="level-item">
+            Next:&nbsp;<a href="{{ .Next.RelPermalink }}">{{ .Next.Title }}{{ if eq .Next.Params.book "self" }} (Introduction){{ end }}</a>
+          </div>
+          {{ end }}
+        </div>
       </div>
 
     </div>
 
     <div class="column is-one-quarter">
 
-      {{ $campaign := index (where (where .Site.Pages "Section" "campaigns") ".Params.name" .Params.campaign) 0}}
+      
       <h3 class="title is-3">Campaign</h3>
-      <p><a href="{{ $campaign.RelPermalink }}">{{ $campaign.Title }}</a></p>
+      <div class="content">
+        <p><a href="{{ $campaign.RelPermalink }}">{{ $campaign.Title }}</a></p>
+      </div>
 
       <h3 class="title is-3">Characters</h3>
-      {{ $characters := where (where .Site.Pages "Section" "characters") ".Params.campaign" .Params.name }}
+      {{ $characters := where (where .Site.Pages "Section" "characters") ".Params.campaign" .Params.campaign }}
       {{ if le (len $characters) 0 }}
       <p>None yet</p>
       {{ else }}

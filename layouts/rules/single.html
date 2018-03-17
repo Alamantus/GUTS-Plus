@@ -1,4 +1,11 @@
 {{ partial "head.html" . }}
+
+{{ if ne .Params.book "self" }}
+  {{ $book := index (where (where .Site.Pages "Section" "rules") ".Params.name" .Params.book) 0 }}
+  {{ $.Scratch.Set "headerTitle" $book.Title }}
+{{ else }}
+  {{ $.Scratch.Set "headerTitle" .Title }}
+{{ end }}
 {{ partial "header.html" . }}
 
 <section class="section"><div class="container">
@@ -61,7 +68,9 @@
     </div>
 
     <div class="column is-three-quarters">
-      <h2 class="title is-2">{{ .Title }}</h2>
+      <h2 class="title is-2">
+        {{ if ne .Params.book "self" }}{{ .Title }}{{ else }}Introduction{{ end }}
+      </h2>
       <div class="content">
         {{ .Content }}
       </div>

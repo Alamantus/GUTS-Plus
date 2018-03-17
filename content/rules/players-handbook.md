@@ -6,8 +6,6 @@ weight: 100
 type: rules
 draft: false
 ---
-# Introduction
-
 Welcome to the wonderful world of GUTS, where players and game masters work together to progress the story within the game world.
 
 The name "GUTS+" is an acronym for the base character stats in the game: ''G''umption, ''U''tility, ''T''hought, and ''S''lyness, ''plus'' additional custom stats that each player chooses to round out their character.

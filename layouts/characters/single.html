@@ -1,13 +1,11 @@
 {{ partial "head.html" . }}
+
+{{ $.Scratch.Set "headerTitle" (printf "Character: %s" .Title) }}
+{{ $campaign := index (where (where .Site.Pages "Section" "campaigns") ".Params.name" .Params.campaign) 0}}
+{{ $.Scratch.Set "headerSubtitle" (printf "Campaign: <a href=\"%s\" style=\"text-decoration: underline;\">%s</a>" $campaign.RelPermalink $campaign.Title | safeHTML) }}
 {{ partial "header.html" . }}
 
 <section class="section"><div class="container">
-
-  <h2>Character: {{ .Title }}</h2>
-  {{ $campaign := index (where (where .Site.Pages "Section" "campaigns") ".Params.name" .Params.campaign) 0}}
-  <h4 class="subtitle is-4">
-    Campaign: <a href="{{ $campaign.RelPermalink }}">{{ $campaign.Title }}</a>
-  </h4>
 
   <div class="columns">
 

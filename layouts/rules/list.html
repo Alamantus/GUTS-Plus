@@ -1,11 +1,10 @@
 {{ partial "head.html" . }}
+
+{{ $rulebooks := .Site.GetPage "page" "rulebooks.md" }}
+{{ $.Scratch.Set "headerTitle" $rulebooks.Title }}
 {{ partial "header.html" . }}
 
 <section class="section"><div class="container">
-
-  {{ $rulebooks := .Site.GetPage "page" "rulebooks.md" }}
-
-  <h2 class="title is-2">{{ $rulebooks.Title }}</h2>
 
   <div class="content">
     {{ $rulebooks.Content }}

@@ -1,12 +1,10 @@
 {{ partial "head.html" . }}
+
+{{ $.Scratch.Set "headerTitle" (printf "Campaign: %s" .Title) }}
+{{ $.Scratch.Set "headerSubtitle" (printf "Started: %s" (.Date.Format  "Monday, January 2, 2006")) }}
 {{ partial "header.html" . }}
 
 <section class="section"><div class="container">
-
-  <h2 class="title is-2">Campaign: {{ .Title }}</h2>
-  <h4 class="subtitle is-4">
-    <strong>Started:</strong> {{ .Date.Format  "Monday, January 2, 2006" }}
-  </h4>
 
   <div class="columns">
 
