@@ -2,6 +2,7 @@ baseURL: http://example.org/
 languageCode: en-us
 title: The GUTS+ Gazette
 theme: ""
+canonifyurls: true
 
 params:
   Description: All the information about, updates for, and campaign examples of the GUTS+ RPG System
