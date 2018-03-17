@@ -65,6 +65,33 @@
       <div class="content">
         {{ .Content }}
       </div>
+
+      <div class="level">
+        <div class="level-left">
+          {{ if and (ne .Params.book "self") .Prev }}
+          <div class="level-item">
+            Prev:&nbsp;<a href="{{ .Prev.RelPermalink }}">{{ .Prev.Title }}{{ if eq .Prev.Params.book "self" }} (Introduction){{ end }}</a>
+          </div>
+          {{ end }}
+        </div>
+        <div class="level-right">
+          {{ if and (ne .Params.book "self") .Next }}
+          <div class="level-item">
+            Next:&nbsp;<a href="{{ .Next.RelPermalink }}">{{ .Next.Title }}</a>
+          </div>
+          {{ end }}
+          {{ if eq .Params.book "self" }}
+            {{ $firstPageRange := first 1 (where (where .Site.Pages "Section" "rules") ".Params.book" .Params.name) }}
+            {{ if (gt (len $firstPageRange) 0)}}
+            {{ $firstPage := index $firstPageRange 0 }}
+            <div class="level-item">
+              Next:&nbsp;<a href="{{ $firstPage.RelPermalink }}">{{ $firstPage.Title }}</a>
+            </div>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
     </div>
 
   </div>

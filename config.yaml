@@ -11,7 +11,7 @@ params:
   - title: Campaigns
     url: /campaigns
   - title: GUTS+ Rules
-    url: https://alamantus.gitlab.io/GUTS-Plus
+    url: /rules
   Homepage:
     Section1:
       header: What is the GUTS+ System?
