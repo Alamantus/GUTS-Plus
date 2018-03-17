@@ -1,0 +1,75 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+<section class="section"><div class="container">
+
+  <div class="columns">
+
+    <div class="column is-one-quarter">
+      <aside class="menu">
+      {{ if ne .Params.book "self" }}
+        <ul class="menu-list">
+          <li><a href="/rules/">See All Books</a></li>
+        </ul>
+        {{ $book := index (where (where .Site.Pages "Section" "rules") ".Params.name" .Params.book) 0 }}
+        <div class="menu-label">
+          {{ $book.Title }}
+        </div>
+        <ul class="menu-list">
+          <li>
+            <a href="{{ $book.RelPermalink }}">
+              Introduction
+            </a>
+          </li>
+          {{ $currentChapter := .Slug }}
+          {{ $chapters := where (where .Site.Pages "Section" "rules") ".Params.book" .Params.book }}
+          {{ range $chapter := $chapters }}
+          <li>
+            <a href="{{ $chapter.RelPermalink }}"{{ if eq $currentChapter $chapter.Slug }} class="is-active"{{ end }}>
+              {{ $chapter.Title }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ else }}
+        <div class="menu-label">
+          Books
+        </div>
+        <ul class="menu-list">
+        {{ $currentBookName := .Params.name }}
+        {{ $books := where (where .Site.Pages "Section" "rules") ".Params.book" "self" }}
+        {{ range $book := $books }}
+          {{ $isCurrentBook := eq $currentBookName $book.Params.name }}   
+          <li>
+            <a href="{{ $book.RelPermalink }}"{{ if $isCurrentBook }} class="is-active"{{ end }}>
+              {{ $book.Title }}
+            </a>
+            {{ if $isCurrentBook }}<ul>
+              {{ range (where (where .Site.Pages "Section" "rules") ".Params.book" .Params.name)}}
+                <li>
+                  <a href="{{ .RelPermalink }}">
+                    {{ .Title }}
+                  </a>
+                </li>
+              {{ end }}
+            </ul>{{ end }}
+          </li>
+        {{ end }}
+        </ul>
+      {{ end }}
+      </aside>
+    </div>
+
+    <div class="column is-three-quarters">
+      <h2 class="title is-2">{{ .Title }}</h2>
+      <div class="content">
+        {{ .Content }}
+      </div>
+    </div>
+
+  </div>
+
+</div></section>
+
+{{ partial "footer.html" . }}
+{{ partial "foot.html" . }}

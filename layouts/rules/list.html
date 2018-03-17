@@ -1,0 +1,24 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+<section class="section"><div class="container">
+
+  {{ $rulebooks := .Site.GetPage "page" "rulebooks.md" }}
+
+  <h2 class="title is-2">{{ $rulebooks.Title }}</h2>
+
+  <div class="content">
+    {{ $rulebooks.Content }}
+  </div>
+
+  {{ $books := where (where .Site.Pages "Section" "rules") ".Params.book" "self" }}
+  {{ range $books }}
+  <div class="box">
+    <h3 class="title is-3"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  </div>
+  {{ end }}
+
+</div></section>
+
+{{ partial "footer.html" . }}
+{{ partial "foot.html" . }}
