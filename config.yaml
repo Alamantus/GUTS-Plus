@@ -1,6 +1,6 @@
 baseURL: http://example.org/
 languageCode: en-us
-title: The GUTS+ Gazette
+title: The GUTS+ System
 theme: ""
 canonifyurls: true
 
@@ -9,14 +9,10 @@ params:
   NavLinks:
   - title: Home
     url: /
+  - title: Books
+    url: /rules
   - title: Campaigns
     url: /campaigns
-  - title: GUTS+ Rules
-    url: /rules
-  - title: Item Catalog
-    url: /items
-  - title: Bestiary
-    url: /bestiary
   Homepage:
     Section1:
       header: What is the GUTS+ System?
@@ -27,14 +23,14 @@ params:
         Rather than having set skills, GUTS+ focuses on individual stats giving your character the ability
         to do things, and if they don't have a specific stat, their success at performing tasks is dependent
         upon their base stats: **G**umption, **U**tility, **T**hought, and **S**lyness
-      callToAction: Read the rules for free!
+      callToAction: Learn to play for free!
       ctaURL: /rules
     Section2:
-      header: What's this website for?
+      header: What is this website?
       text: |
-        The GUTS+ Gazette mainly exists as a hub of all the information about and an excuse to post example campaigns
-        using the GUTS+ System. Because the GUTS+ System is still in development, it also contains news and development
-        notes about the process for anyone who might be interested.
+        This website is a hub of all the information about the GUTS+ System, and is also an excuse to post
+        example campaigns using the GUTS+ System. Because the GUTS+ System is still in development, it also
+        contains news and development notes about the process for anyone who might be interested.
 
         The campaign examples will be posted as serial stories with links to the characters' sheets and
         inventories in every post, so be sure to check back to see what happens!
