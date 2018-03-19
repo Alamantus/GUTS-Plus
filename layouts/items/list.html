@@ -1,0 +1,39 @@
+{{ partial "head.html" . }}
+
+{{ $.Scratch.Set "headerTitle" .Title }}
+{{ partial "header.html" . }}
+
+<section class="section"><div class="container">
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+
+  {{ $items := where (where .Site.Pages "Section" "items") ".Params.itemtype" "ne" "self" }}
+  <div class="columns is-multiline">
+  {{ range $items.GroupByParam "itemtype" }}
+    <div class="column is-half">
+      <div class="box">
+        {{ $itemType := index (where (where $.Site.Pages "Section" "items") ".Params.name" .Key) 0}}
+        <h2 class="title is-2">{{ $itemType.Title }}</h2>
+        <div class="content">
+          {{ $itemType.Content }}
+        </div>
+        <div class="columns is-multiline">
+        {{ range .Pages }}
+          <div class="column is-one-third">
+            <div class="content">
+              <p><strong><a href="{{ .RelPermalink }}">{{ .Title }}</a></strong></p>
+            </div>
+          </div>
+        {{ end }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+  </div>
+
+</div></section>
+
+{{ partial "footer.html" . }}
+{{ partial "foot.html" . }}

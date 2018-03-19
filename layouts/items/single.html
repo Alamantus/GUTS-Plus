@@ -1,0 +1,123 @@
+{{ partial "head.html" . }}
+
+{{ if ne .Params.itemtype "self" }}
+  {{ $itemType := index (where (where .Site.Pages "Section" "items") ".Params.name" .Params.itemtype) 0 }}
+  {{ $.Scratch.Set "headerTitle" $itemType.Title }}
+{{ else }}
+  {{ $.Scratch.Set "headerTitle" .Title }}
+{{ end }}
+{{ partial "header.html" . }}
+
+<section class="section"><div class="container">
+
+  <div class="columns">
+
+    <div class="column is-one-quarter">
+      <aside class="menu">
+      {{ $items := where (where .Site.Pages "Section" "items") ".Params.itemtype" .Params.itemtype }}
+      {{ if ne .Params.itemtype "self" }}
+        <ul class="menu-list">
+          <li><a href="/items/">See All Items</a></li>
+        </ul>
+        <div class="menu-label">
+          {{ replace .Params.itemtype "-" " " | title }}
+        </div>
+        <ul class="menu-list">
+          {{ $currentItem := .Slug }}
+          {{ $items := where (where .Site.Pages "Section" "items") ".Params.itemtype" .Params.itemtype }}
+          {{ range $item := $items }}
+          <li>
+            <a href="{{ $item.RelPermalink }}"{{ if eq $currentItem $item.Slug }} class="is-active"{{ end }}>
+              {{ $item.Title }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ else }}
+        <div class="menu-label">
+          Item Catalog
+        </div>
+        <ul class="menu-list">
+        {{ $currentItemType := .Params.name }}
+        {{ $itemTypes := where (where .Site.Pages "Section" "items") ".Params.itemtype" "self" }}
+        {{ range $itemType := $itemTypes }}  
+          <li>
+            <a href="{{ $itemType.RelPermalink }}"{{ if eq $currentItemType $itemType.Params.name  }} class="is-active"{{ end }}>
+              {{ $itemType.Title }}
+            </a>
+          </li>
+        {{ end }}
+        </ul>
+      {{ end }}
+      </aside>
+    </div>
+
+    <div class="column is-three-quarters">
+      {{ if ne .Params.itemtype "self"}}
+      <h2 class="title is-2">
+        {{ .Title }}
+      </h2>
+      <div class="field is-grouped is-grouped-multiline">
+        {{ if isset .Params "location" }}
+        <div class="control">
+          <div class="tags has-addons">
+            <span class="tag is-primary">Worn On</span>
+            <span class="tag">{{ title .Params.location }}</span>
+          </div>
+        </div>
+        {{ end }}
+        {{ if isset .Params "perception" }}
+        <div class="control">
+          <div class="tags has-addons">
+            <span class="tag is-primary">Perception</span>
+            <span class="tag">{{ title .Params.perception }}</span>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+      <div class="content">
+        {{ .Content }}
+      </div>
+
+      {{ if eq .Params.itemtype "self"}}
+      <div class="columns is-multiline">
+        {{ range where (where .Site.Pages "Section" "items") ".Params.itemtype" .Params.name }}
+        <div class="column is-one-quarter">
+          <div class="content">
+            <p><strong><a href="{{ .RelPermalink }}">{{ .Title }}</a></strong></p>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <div class="level">
+        <div class="level-left">
+          {{ if .Prev }}
+          {{ if eq .Params.itemtype .Prev.Params.itemtype}}
+          <div class="level-item">
+            Prev:&nbsp;<a href="{{ .Prev.RelPermalink }}">{{ .Prev.Title }}{{ if eq .Prev.Params.itemtype "self" }} (Introduction){{ end }}</a>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+        <div class="level-right">
+          {{ if .Next }}
+          {{ if eq .Params.itemtype .Next.Params.itemtype }}
+          <div class="level-item">
+            Next:&nbsp;<a href="{{ .Next.RelPermalink }}">{{ .Next.Title }}{{ if eq .Next.Params.itemtype "self" }} (Introduction){{ end }}</a>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div></section>
+
+{{ partial "footer.html" . }}
+{{ partial "foot.html" . }}

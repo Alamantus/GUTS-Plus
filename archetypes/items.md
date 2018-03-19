@@ -8,7 +8,7 @@ perception: casual|fancy|lazy|athletic|nerdy|historical|futuristic
 {{ end }}
 {{- else -}}
 title: "{{ replace $itemType "-" " " | title }}"
-name: "{{ $itemType | urlize }}
+name: "{{ $itemType | urlize }}"
 itemType: self{{ end }}
 type: items
 draft: true
