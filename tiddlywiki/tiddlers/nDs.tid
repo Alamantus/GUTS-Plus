@@ -1,9 +1,0 @@
-created: 20180206203241321
-creator: Robbie Antenesse
-modified: 20180206203454806
-modifier: Robbie Antenesse
-revision: 0
-tags: Concept
-title: nDs
-
-The formula representing how many of what type of die to roll (n dice with s sides). For example, 2D6 means a roll of 2 six-sided dice.
