@@ -4,13 +4,13 @@
       <h2 class="title">{{ .Site.Title }}</h2>
     </a>
 
-    <div class="navbar-burger">
+    <div class="navbar-burger" onclick="(function(){this.classList.toggle('is-active');document.getElementById('mainMenu').classList.toggle('is-active');}).call(this)">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </div>
-  <div class="navbar-menu">
+  <div class="navbar-menu" id="mainMenu">
     <div class="navbar-end">
       {{ range .Site.Params.NavLinks }}
       <a href="{{ .url }}" class="navbar-item">{{ .title }}</a>
