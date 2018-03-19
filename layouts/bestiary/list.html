@@ -1,0 +1,39 @@
+{{ partial "head.html" . }}
+
+{{ $.Scratch.Set "headerTitle" .Title }}
+{{ partial "header.html" . }}
+
+<section class="section"><div class="container">
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+
+  {{ $creatures := where (where .Site.Pages "Section" "bestiary") ".Params.creaturetype" "ne" "self" }}
+  <div class="columns is-multiline">
+  {{ range $creatures.GroupByParam "creaturetype" }}
+    <div class="column is-half">
+      <div class="box">
+        {{ $creatureType := index (where (where $.Site.Pages "Section" "bestiary") ".Params.name" .Key) 0}}
+        <h2 class="title is-2">{{ $creatureType.Title }}</h2>
+        <div class="content">
+          {{ $creatureType.Content }}
+        </div>
+        <div class="columns is-multiline">
+        {{ range .Pages }}
+          <div class="column is-one-third">
+            <div class="content">
+              <p><strong><a href="{{ .RelPermalink }}">{{ .Title }}</a></strong></p>
+            </div>
+          </div>
+        {{ end }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+  </div>
+
+</div></section>
+
+{{ partial "footer.html" . }}
+{{ partial "foot.html" . }}

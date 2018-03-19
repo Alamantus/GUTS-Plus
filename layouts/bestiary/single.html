@@ -1,0 +1,175 @@
+{{ partial "head.html" . }}
+
+{{ if ne .Params.creaturetype "self" }}
+  {{ $creatureType := index (where (where .Site.Pages "Section" "bestiary") ".Params.name" .Params.creaturetype) 0 }}
+  {{ $.Scratch.Set "headerTitle" $creatureType.Title }}
+{{ else }}
+  {{ $.Scratch.Set "headerTitle" .Title }}
+{{ end }}
+{{ partial "header.html" . }}
+
+<section class="section"><div class="container">
+
+  <div class="columns">
+
+    <div class="column is-one-quarter">
+      <aside class="menu">
+      {{ $creatures := where (where .Site.Pages "Section" "bestiary") ".Params.creaturetype" .Params.creaturetype }}
+      {{ if ne .Params.creaturetype "self" }}
+        <ul class="menu-list">
+          <li><a href="/bestiary/">See All Creatures</a></li>
+        </ul>
+        <div class="menu-label">
+          {{ replace .Params.creaturetype "-" " " | title }}
+        </div>
+        <ul class="menu-list">
+          {{ $currentcreature := .Slug }}
+          {{ $creatures := where (where .Site.Pages "Section" "bestiary") ".Params.creaturetype" .Params.creaturetype }}
+          {{ range $creature := $creatures }}
+          <li>
+            <a href="{{ $creature.RelPermalink }}"{{ if eq $currentcreature $creature.Slug }} class="is-active"{{ end }}>
+              {{ $creature.Title }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ else }}
+        <div class="menu-label">
+          Bestiary
+        </div>
+        <ul class="menu-list">
+        {{ $currentcreatureType := .Params.name }}
+        {{ $creatureTypes := where (where .Site.Pages "Section" "bestiary") ".Params.creaturetype" "self" }}
+        {{ range $creatureType := $creatureTypes }}  
+          <li>
+            <a href="{{ $creatureType.RelPermalink }}"{{ if eq $currentcreatureType $creatureType.Params.name  }} class="is-active"{{ end }}>
+              {{ $creatureType.Title }}
+            </a>
+          </li>
+        {{ end }}
+        </ul>
+      {{ end }}
+      </aside>
+    </div>
+
+    <div class="column {{ if ne .Params.creaturetype "self"}}is-half{{ else }}is-three-quarters{{ end }}">
+      {{ if ne .Params.creaturetype "self"}}
+      <h2 class="title is-2">
+        {{ .Title }}
+      </h2>
+      <div class="field is-grouped is-grouped-multiline">
+        {{ range .Params.stats }}
+        <div class="control">
+          <div class="tags has-addons">
+            <span class="tag is-primary">{{ title .name }}</span>
+            <span class="tag">{{ .value }}</span>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+      <div class="content">
+        {{ .Content }}
+      </div>
+
+      {{ if eq .Params.creaturetype "self"}}
+      <div class="columns is-multiline">
+        {{ range where (where .Site.Pages "Section" "bestiary") ".Params.creaturetype" .Params.name }}
+        <div class="column is-one-quarter">
+          <div class="content">
+            <p><strong><a href="{{ .RelPermalink }}">{{ .Title }}</a></strong></p>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <div class="level">
+        <div class="level-left">
+          {{ if .Prev }}
+          {{ if eq .Params.creaturetype .Prev.Params.creaturetype}}
+          <div class="level-creature">
+            Prev:&nbsp;<a href="{{ .Prev.RelPermalink }}">{{ .Prev.Title }}{{ if eq .Prev.Params.creaturetype "self" }} (Introduction){{ end }}</a>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+        <div class="level-right">
+          {{ if .Next }}
+          {{ if eq .Params.creaturetype .Next.Params.creaturetype }}
+          <div class="level-creature">
+            Next:&nbsp;<a href="{{ .Next.RelPermalink }}">{{ .Next.Title }}{{ if eq .Next.Params.creaturetype "self" }} (Introduction){{ end }}</a>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+    </div>
+
+    {{ if ne .Params.creaturetype "self"}}
+    <div class="column is-one-quarter">
+      <h3 class="title is-3">Inventory</h3>
+      <h5 class="title is-5">Hands & Pockets</h5>
+      <div class="content">
+        {{ if gt (len .Params.inventory.hands) 0 }}
+        <ul>
+          {{ range .Params.inventory.hands }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+        {{ else }}
+        <p>None</p>
+        {{ end }}
+      </div>
+      
+      <h5 class="title is-5">Bag</h5>
+      <div class="content">
+        {{ if gt (len .Params.inventory.bag) 0 }}
+        <ul>
+          {{ range .Params.inventory.bag }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+        {{ else }}
+        <p>None</p>
+        {{ end }}
+      </div>
+
+      <h3 class="title is-3">Equipment</h3>
+      <h5 class="title is-5">Clothing</h5>
+      <div class="content">
+        <p>
+        {{ if and (eq .Params.clothing.torso nil) (and (eq .Params.clothing.legs nil) (eq .Params.clothing.feet nil))}}
+          None
+        {{ else }}
+          <strong>Torso:</strong> {{ .Params.clothing.torso }}<br />
+          <strong>Legs:</strong> {{ .Params.clothing.legs }}<br />
+          <strong>Feet:</strong> {{ .Params.clothing.feet }}
+        {{ end }}
+        </p>
+      </div>
+      <h5 class="title is-5">Accessories</h5>
+      <div class="content">
+        <p>
+        {{ if and (and (eq .Params.accessories.head nil) (and (eq .Params.accessories.neck nil) (eq .Params.accessories.arms nil))) (and (eq .Params.accessories.back nil) (and (eq .Params.accessories.waist nil) (eq .Params.accessories.legs nil))) }}
+          None
+        {{ else }}
+          <strong>Head:</strong> {{ .Params.accessories.head }}<br />
+          <strong>Neck:</strong> {{ .Params.accessories.neck }}<br />
+          <strong>Arms:</strong> {{ .Params.accessories.arms }}<br />
+          <strong>Back:</strong> {{ .Params.accessories.back }}<br />
+          <strong>Waist:</strong> {{ .Params.accessories.waist }}<br />
+          <strong>Legs:</strong> {{ .Params.accessories.legs }}
+        {{ end }}
+        </p>
+      </div>
+    </div>
+    {{ end }}
+
+  </div>
+
+</div></section>
+
+{{ partial "footer.html" . }}
+{{ partial "foot.html" . }}
