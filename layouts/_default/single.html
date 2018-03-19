@@ -1,10 +1,20 @@
 {{ partial "head.html" . }}
+
+{{ $.Scratch.Set "headerTitle" .Title }}
+{{ if and (isset .Params "categories") (isset .Params "tags") }}
+  {{ $subtitle1 := delimit (apply .Params.categories "title" ".") ", " ", and " }}
+  {{ $subtitle2 := delimit (apply .Params.tags "urlize" ".") ", " }}
+  {{ $.Scratch.Set "headerSubtitle" (printf "Posted in %s<br />Tagged: %s" $subtitle1 $subtitle2 | safeHTML) }}
+{{ else if isset .Params "categories" }}
+  {{ $subtitle1 := delimit (apply .Params.categories "title" ".") ", " }}
+  {{ $.Scratch.Set "headerSubtitle" (printf "Posted in: %s" $subtitle1) }}
+{{ end }}
 {{ partial "header.html" . }}
 
 <section class="section"><div class="container">
 
-  {{ if .Date }}<p>{{ .Date.Format  "Monday, January 2, 2006" }}</p>{{ end }}
   <div class="content">
+    {{ if .Date }}<p><em>{{ .Date.Format  "Monday, January 2, 2006" }}</em></p>{{ end }}
     {{ .Content }}
   </div>
 
