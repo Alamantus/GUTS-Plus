@@ -1,13 +1,19 @@
-# This file is a template, and might need editing before it works on your project.
-# Full project: https://gitlab.com/pages/plain-html
+# Use the PHP docker image so we can use cURL.
+image: php:7.1.1
+
+before_script:
+# Download Hugo 0.37.1 release
+# Reminder: Get the release asset id from https://api.github.com/repos/gohugoio/hugo/releases if you change versions
+- "curl -vLJO -H 'Accept: application/octet-stream' 'https://api.github.com/repos/gohugoio/hugo/releases/assets/6437077'"
+- tar -xzf hugo_0.37.1_Linux-64bit.tar.gz
+
 pages:
   stage: deploy
   script:
-  - mkdir .public
-  - cp -r ./output/public/* .public
-  - mv .public public
+#  - ./hugo version
+  - ./hugo --config config.yaml
   artifacts:
     paths:
-    - /
+    - public
   only:
   - master
