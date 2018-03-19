@@ -1,13 +1,12 @@
 {{ partial "head.html" . }}
 
-{{ $rulebooks := .Site.GetPage "page" "rulebooks.md" }}
-{{ $.Scratch.Set "headerTitle" $rulebooks.Title }}
+{{ $.Scratch.Set "headerTitle" .Title }}
 {{ partial "header.html" . }}
 
 <section class="section"><div class="container">
 
   <div class="content">
-    {{ $rulebooks.Content }}
+    {{ .Content }}
   </div>
 
   {{ $books := where (where .Site.Pages "Section" "rules") ".Params.book" "self" }}
