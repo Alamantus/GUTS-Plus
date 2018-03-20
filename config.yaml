@@ -1,4 +1,4 @@
-baseURL: https://alamantus.gitlab.io/GUTS-Plus/
+baseURL: http://gutsplus.tk
 languageCode: en-us
 title: The GUTS+ System
 theme: ""
@@ -9,8 +9,10 @@ params:
   NavLinks:
   - title: Home
     url: /
-  - title: Books
+  - title: Rulebooks
     url: /rules
+  - title: Posts
+    url: /posts
   - title: Campaigns
     url: /campaigns
   Homepage:
