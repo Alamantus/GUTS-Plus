@@ -18,32 +18,6 @@
     {{ .Content }}
   </div>
 
-  <div id="commentsLoading">Loading comments...<div class="loader"></div></div>
-  <script>
-    (function(){
-      var check = setInterval(function() {
-        if (document.getElementById('hashover')) {
-          document.getElementById('commentsLoading').innerHTML = '<h3 class="title is-3">Comments</h3>';
-          var iframe = document.getElementById('commentLoadIframe');
-          iframe.parentNode.removeChild(iframe);
-          clearInterval(check);
-        }
-      });
-    })();
-    function loadComments (context) {
-      setTimeout(function() {
-        if (!document.getElementById('hashover')) {
-          window.location.reload();
-        }
-      }, 1500);
-    }
-  </script>
-  <iframe id="commentLoadIframe" width="0" height="0" src="http://frog.ga/hashover/comments.php" onload="(loadComments)()"></iframe>
-  <div class="columns">
-    <div class="column" id="comments">
-      <script src="http://frog.ga/hashover/comments.php"></script>
-    </div>
-  </div>
 </div></section>
 
 {{ partial "footer.html" . }}
