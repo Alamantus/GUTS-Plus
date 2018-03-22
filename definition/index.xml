@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Definitions on The GUTS&#43; System</title>
+    <link>http://gutsplus.tk/definition/</link>
+    <description>Recent content in Definitions on The GUTS&#43; System</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://gutsplus.tk/definition/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Definition of Game Master</title>
+      <link>http://gutsplus.tk/definition/game-master/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/definition/game-master/</guid>
+      <description>The Game Master (GM for short) is the narrator and controller of the game world.</description>
+    </item>
+    
+    <item>
+      <title>Definition of In-Character</title>
+      <link>http://gutsplus.tk/definition/in-character/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/definition/in-character/</guid>
+      <description>Actions taken by a character rather than the player.</description>
+    </item>
+    
+    <item>
+      <title>Definition of Non-Playable Character</title>
+      <link>http://gutsplus.tk/definition/non-playable-character/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/definition/non-playable-character/</guid>
+      <description>A character played and controlled by the Game Master instead of by the players.</description>
+    </item>
+    
+    <item>
+      <title>Definition of Out-of-Character</title>
+      <link>http://gutsplus.tk/definition/out-of-character/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/definition/out-of-character/</guid>
+      <description>Actions and dialog taken by the player but not the character.</description>
+    </item>
+    
+    <item>
+      <title>Definition of nDs</title>
+      <link>http://gutsplus.tk/definition/nds/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/definition/nds/</guid>
+      <description>The formula representing how many of what type of die to roll (n dice with s sides). For example, 2D6 means a roll of 2 six-sided dice.</description>
+    </item>
+    
+  </channel>
+</rss>

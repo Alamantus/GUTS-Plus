@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sessions on The GUTS&#43; System</title>
+    <link>http://gutsplus.tk/sessions/</link>
+    <description>Recent content in Sessions on The GUTS&#43; System</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Mar 2018 15:24:06 -0600</lastBuildDate>
+    
+	<atom:link href="http://gutsplus.tk/sessions/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Session 1</title>
+      <link>http://gutsplus.tk/sessions/mother-earth_0/</link>
+      <pubDate>Wed, 14 Mar 2018 15:24:06 -0600</pubDate>
+      
+      <guid>http://gutsplus.tk/sessions/mother-earth_0/</guid>
+      <description>GM:
+A crowd converges on the old town hall, where the mayor has called a meeting to discuss the strange happenings in the sky for the past few weeks. There is no more sitting room, but all of the windows and doors have been opened, and a speaker system has been set up on the stage where the mayor will be speaking. After a bit of time, the mayor, a very small man named Fred Devonshire with a pristine, periwinkle suit and a perfectly waxed, white moustache, climbs onto a stool to be seen at the podium at the front of the town hall.</description>
+    </item>
+    
+  </channel>
+</rss>

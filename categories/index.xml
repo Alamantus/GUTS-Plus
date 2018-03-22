@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on The GUTS&#43; System</title>
+    <link>http://gutsplus.tk/categories/</link>
+    <description>Recent content in Categories on The GUTS&#43; System</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://gutsplus.tk/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>News</title>
+      <link>http://gutsplus.tk/categories/news/</link>
+      <pubDate>Mon, 12 Mar 2018 10:28:45 -0600</pubDate>
+      
+      <guid>http://gutsplus.tk/categories/news/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

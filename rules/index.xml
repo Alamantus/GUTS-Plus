@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rulebooks on The GUTS&#43; System</title>
+    <link>http://gutsplus.tk/rules/</link>
+    <description>Recent content in Rulebooks on The GUTS&#43; System</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://gutsplus.tk/rules/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Player&#39;s Handbook</title>
+      <link>http://gutsplus.tk/rules/players-handbook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/rules/players-handbook/</guid>
+      <description>Welcome to the wonderful world of GUTS, where players and game masters work together to progress the story within the game world.
+The name &amp;ldquo;GUTS+&amp;rdquo; is an acronym for the base character stats in the game: &amp;ldquo;G&amp;rdquo;umption, &amp;ldquo;U&amp;rdquo;tility, &amp;ldquo;T&amp;rdquo;hought, and &amp;ldquo;S&amp;rdquo;lyness, &amp;ldquo;plus&amp;rdquo; additional custom stats that each player chooses to round out their character.
+Gameplay is heavily narrative-based and relies on a Game Master who is comfortable either improvising frequently to give players the smoothest narrative experience possible or railroading their players into following a specific path for the sake of keeping the story solid.</description>
+    </item>
+    
+    <item>
+      <title>Character Creation</title>
+      <link>http://gutsplus.tk/rules/players-handbook/character-creation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/rules/players-handbook/character-creation/</guid>
+      <description>Your character is your avatar in the game world, and it&amp;rsquo;s also what makes playing the game fun and interesting! When you create your character, it&amp;rsquo;s important to try to build them based on how the character would actually be within the world&amp;hellip; you&amp;rsquo;ll see what I mean.
+First, get your Character Sheet so you can fill it out with your character information.
+Biography
+To create your character, first you need a backstory, a personality, and an appearance.</description>
+    </item>
+    
+    <item>
+      <title>Playing the Game</title>
+      <link>http://gutsplus.tk/rules/players-handbook/playing-the-game/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/rules/players-handbook/playing-the-game/</guid>
+      <description>Playing the GUTS+ System requires only the occasional D6 roll and a bit of imagination.
+The Basics
+Role playing is a bit like collaborating with a group to tell a story with special rules in place that prevent the story from going too far off the rails. The GM sets up the world and the situation, and it&amp;rsquo;s up to you and your fellow players to work through that situation together using your characters.</description>
+    </item>
+    
+    <item>
+      <title>Game Master&#39;s Handbook</title>
+      <link>http://gutsplus.tk/rules/game-masters-handbook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/rules/game-masters-handbook/</guid>
+      <description>This guide will walk you through the concepts of how the game world works and what your role as the Game Master entails. As Game Master (GM), your role is architect, narrator, decider, intermediary, friend, enemy, and anything else that is required for the players to navigate the game world. It&amp;rsquo;s a big responsibility, but it&amp;rsquo;s also a lot of fun!</description>
+    </item>
+    
+    <item>
+      <title>Grimoire</title>
+      <link>http://gutsplus.tk/rules/grimoire/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/rules/grimoire/</guid>
+      <description>This is a guide to the Magic system in GUTS+.
+Magic in GUTS+ depends entirely on the concept of Essence. Every living creature is able to utilize their Essence, but it requires a great amount of focus and control to use it. So long as you have an ability that can harness their Essence, you can manipulate it to do a variety of interesting things.</description>
+    </item>
+    
+    <item>
+      <title>Essence</title>
+      <link>http://gutsplus.tk/rules/grimoire/essence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/rules/grimoire/essence/</guid>
+      <description>Every living thing has a soul, or &amp;ldquo;Essence,&amp;rdquo; that is tightly connected to their body. It is completely invisible but absolutely there, but few people know about it because its bounds are your own body&amp;rsquo;s bounds. The Essence is what fills the spaces between your cells and makes you feel alive. There are a number of different makeups of Essense, some more dense or hotter or colder than others, but all Essense is composed of the same, tangible substance that is interwoven into the very being of its owner.</description>
+    </item>
+    
+  </channel>
+</rss>

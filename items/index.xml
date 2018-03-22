@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Item Catalog on The GUTS&#43; System</title>
+    <link>http://gutsplus.tk/items/</link>
+    <description>Recent content in Item Catalog on The GUTS&#43; System</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://gutsplus.tk/items/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Clothing</title>
+      <link>http://gutsplus.tk/items/clothing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/items/clothing/</guid>
+      <description>Clothing is a subset of items that can be worn on a character&amp;rsquo;s torso, legs, or feet. When they are not being worn, they are treated as regular items stored in the character&amp;rsquo;s inventory.</description>
+    </item>
+    
+    <item>
+      <title>Jeans</title>
+      <link>http://gutsplus.tk/items/clothing/jeans/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/items/clothing/jeans/</guid>
+      <description>A basic legs clothing item. Can be styled however a player would like.</description>
+    </item>
+    
+    <item>
+      <title>Sneakers</title>
+      <link>http://gutsplus.tk/items/clothing/sneakers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/items/clothing/sneakers/</guid>
+      <description>A basic feet clothing item. Can be styled however a player would like.
+Allows character to comfortably walk on hard or uneven ground.</description>
+    </item>
+    
+    <item>
+      <title>T-Shirt</title>
+      <link>http://gutsplus.tk/items/clothing/t-shirt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://gutsplus.tk/items/clothing/t-shirt/</guid>
+      <description>A basic torso clothing item. Can be styled however a player would like.</description>
+    </item>
+    
+  </channel>
+</rss>

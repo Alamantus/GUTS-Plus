@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>News on The GUTS&#43; System</title>
+    <link>http://gutsplus.tk/categories/news/</link>
+    <description>Recent content in News on The GUTS&#43; System</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 12 Mar 2018 10:28:45 -0600</lastBuildDate>
+    
+	<atom:link href="http://gutsplus.tk/categories/news/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction</title>
+      <link>http://gutsplus.tk/posts/introduction/</link>
+      <pubDate>Mon, 12 Mar 2018 10:28:45 -0600</pubDate>
+      
+      <guid>http://gutsplus.tk/posts/introduction/</guid>
+      <description>Welcome to the home of the GUTS+ System, a role-playing game system for everyone! The system itself is still in development, but I believe it is far enough along to actually begin using for your gameplay.
+As you have probably read on the home page, the basics of how to play are available for free, but the gist of the system is this: your characters themselves define what they are able to do.</description>
+    </item>
+    
+  </channel>
+</rss>
